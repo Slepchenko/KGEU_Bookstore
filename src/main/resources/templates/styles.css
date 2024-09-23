@@ -1,8 +1,26 @@
-
 body {
     margin: 0;
     width: 100vw;
     height: 100vh;
+}
+
+
+/*
+div {
+     font-style: italic;
+     font-family: Light;
+     font-size: 32px;
+     font-weight: 100;
+}
+
+@font-face {
+    font-family: Light;
+    src: url('Roboto/Roboto-Light.ttf');
+}
+
+@font-face {
+    font-family: Bold;
+    src: url('Roboto/Roboto-Bold.ttf');
 }
 
 .header {
@@ -14,12 +32,18 @@ body {
     display: inline-block;
     background: #555;
     width: 30%;
-    height: 90%
+    height: 80%
 }
 
 .main {
     display: inline-block;
-        background: #444;
-        width: 70%;
-        height: 90%
+    background: #444;
+    width: 70%;
+    height: 80%
 }
+
+.footer {
+    background: tomato;
+    height: 17%;
+}
+*/
