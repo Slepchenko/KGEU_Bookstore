@@ -15,7 +15,7 @@ body {
 
 .logo {
     margin-left: 30px;
-    width: 50px;
+    width: 150px;
 }
 
 .avatar {
@@ -33,9 +33,16 @@ body {
     background: #222;
 }
 
+.nav a {
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: white;
+}
+
 .content {
     display: flex;
-    height: 70%;
+    height: 60%;
     font-family: RobotoThin
 }
 
@@ -47,7 +54,7 @@ body {
 .aside a {
     display: inline-block;
     margin-top: 5px;
-    margin-left: 5px;
+    margin-left: 10px;
     color: white;
 }
 
@@ -58,11 +65,15 @@ body {
 
 .footer {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     width: 100%;
-    height: 10%;
+    height: 20%;
     background: #444;
     font-size: 10 px;
     color: white;
+}
+
+.div-footer {
+    font-family: RobotoBold
 }

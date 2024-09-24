@@ -1,0 +1,44 @@
+.company-inf {
+    margin-top: 10px;
+    margin-right: 80px;
+}
+
+.menu {
+    margin-top: 10px;
+    margin-right: 80px;
+}
+
+.contacts {
+    margin-top: 10px;
+}
+
+.contacts-inf {
+   display: flex;
+
+}
+
+
+
+.telegram {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+
+.email {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+
+.github {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+
+.phone {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
