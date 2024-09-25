@@ -1,7 +1,9 @@
 body {
-    margin: 0;
+    max-width: 1500px;
+    margin: 0 auto;
     width: 100vw;
     height: 100vh;
+    background-color: #777;
 }
 
 .header {
@@ -49,13 +51,6 @@ body {
 .aside {
     background: #999;
     width: 20%;
-}
-
-.aside a {
-    display: inline-block;
-    margin-top: 5px;
-    margin-left: 10px;
-    color: white;
 }
 
 .main {
