@@ -13,11 +13,9 @@
 }
 
 .contacts-inf {
-   display: flex;
-
+    display: flex;
+    margin-top: 15px;
 }
-
-
 
 .telegram {
     width: 20px;
@@ -41,4 +39,8 @@
     width: 20px;
     height: 20px;
     margin-right: 20px;
+}
+
+.item-menu {
+    margin-top: 5px;
 }

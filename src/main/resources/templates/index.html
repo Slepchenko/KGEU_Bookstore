@@ -10,6 +10,10 @@
     <link rel="stylesheet" type="text/css" href="footer-inf.css"/>
 </head>
 <body>
+
+
+
+<!--header-->
 <header class="header">
     <img class="logo" src="/static/1.jpg"/>
     <div class="search-grp">
@@ -18,6 +22,8 @@
     </div>
     <img class="avatar" src="/static/2.png"/>
 </header>
+
+<!--Панель навигации Меню-->
 <nav class="nav">
     <div><a th:href="#">Главная</a></div>
     <div><a th:href="#">Бестселлер</a></div>
@@ -29,6 +35,7 @@
     <div><a th:href="#">Обратная связь</a></div>
 </nav>
 
+<!--Content -->
 <div class="content">
     <aside class="aside">
         <a href="#">Первая ссылка</a>
@@ -36,27 +43,29 @@
     </aside>
     <main class="main">Контент</main>
 </div>
+
+<!--footer-->
 <footer class="footer">
     <div class="company-inf">
         <div class="div-footer"><h3>Книжный магазин "Апысь"</h3></div>
-        <div>"Апысь" - крупнейшая сеть книжных магазинов, успешно работающих от Кибячей до Новых Параты</div>
+        <div>"Апысь" - крупнейшая сеть книжных магазинов, успешно работающих от Кильдебяк до пос. Лесхоз</div>
         <div>А ещё это - крупный интернет-магазин книг. В нем вы можете заказывать книги в любое время года</div>
         <div>Купив книгу в магазине "Апысь", вы становитесь её обладателем!</div>
     </div>
     <div class="menu">
         <div><a th:href="#">Главная</a></div>
-        <div><a th:href="#">Бестселлер</a></div>
-        <div><a th:href="#">Предзаказ</a></div>
-        <div><a th:href="#">Преимущества</a></div>
-        <div><a th:href="#">Каталог</a></div>
-        <div><a th:href="#">О нас</a></div>
-        <div><a th:href="#">Контакты</a></div>
-        <div><a th:href="#">Обратная связь</a></div>
+        <div class="item-menu"><a th:href="#">Бестселлер</a></div>
+        <div class="item-menu"><a th:href="#">Предзаказ</a></div>
+        <div class="item-menu"><a th:href="#">Преимущества</a></div>
+        <div class="item-menu"><a th:href="#">Каталог</a></div>
+        <div class="item-menu"><a th:href="#">О нас</a></div>
+        <div class="item-menu"><a th:href="#">Контакты</a></div>
+        <div class="item-menu"><a th:href="#">Обратная связь</a></div>
     </div>
     <div class="contacts">
-        <div>КГЭУ</div>
-        <div>гр. ЗТРСм-1-23</div>
-        <div>Слепченко Александр Сергеевич</div>
+        <div class="item-menu">КГЭУ</div>
+        <div class="item-menu">гр. ЗТРСм-1-23</div>
+        <div class="item-menu">Слепченко Александр Сергеевич</div>
         <div class="contacts-inf">
             <a href="#"><img class="phone" src="/static/phone.svg"/></a>
             <img class="telegram" src="/static/telegram.svg"/>
