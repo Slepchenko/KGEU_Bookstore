@@ -22,8 +22,6 @@ public class Feedback {
 
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "communicate_id")
-    private Communicate communicate;
+    private String note;
 
 }
