@@ -1,31 +1,106 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:font-family="http://www.w3.org/1999/xhtml" xmlns:font-size="http://www.w3.org/1999/xhtml">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Книжный магазин</title>
     <link rel="stylesheet" type="text/css" href="fonts.css"/>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <link rel="stylesheet" type="text/css" href="header.css"/>
+    <link rel="stylesheet" type="text/css" href="footer-inf.css"/>
+    <link rel="stylesheet" type="text/css" href="content.css"/>
 </head>
 <body>
-    <header class="header">
-        <img class="logo" src="/static/1.jpg"/>
-        <img class="avatar" src="/static/2.png"/>
-    </header>
-    <nav class="nav">
-        Навигация
-    </nav>
 
-    <div class="content">
-        <aside class="aside">
-            <a href="#">Первая ссылка</a>
-            <a href="#">Вторая ссылка</a>
 
-        </aside>
-        <main class="main">Контент</main>
+
+<!--header-->
+<header class="header">
+    <img class="logo" src="/static/1.jpg"/>
+    <div class="search-grp">
+        <input class="search" id="search" name="search" placeholder="поиск..." required>
+        <button class="search-btn"><a th:href="#">&#128269;</a></button>
     </div>
-    <footer class="footer">
-        Выполнил студент группы ЗТРСм-1-23 А.С. Слепченко 2024г.
-    </footer>
+    <img class="avatar" src="/static/2.png"/>
+</header>
+
+<!--Панель навигации Меню-->
+<nav class="nav">
+    <div><a th:href="#">Главная</a></div>
+    <div><a th:href="#">Бестселлер</a></div>
+    <div><a th:href="#">Предзаказ</a></div>
+    <div><a th:href="#">Преимущества</a></div>
+    <div><a th:href="#">Каталог</a></div>
+    <div><a th:href="#">О нас</a></div>
+    <div><a th:href="#">Контакты</a></div>
+    <div><a th:href="#">Обратная связь</a></div>
+</nav>
+
+<!--Content -->
+<div class="content">
+<!--    Жанры-->
+    <aside class="aside">
+        <div class="books-category">Книги</div>
+        <div style="margin-left: 10px; color: gray;">Категории</div>
+        <div><a class="category-link" href="#">Бестселлеры</a></div>
+        <div><a class="category-link" href="#">Психология</a></div>
+        <div><a class="category-link" href="#">Искусство, дизайн и мода</a></div>
+        <div><a class="category-link" href="#">Бизнес-книги</a></div>
+        <div><a class="category-link" href="#">Художественная литература</a></div>
+        <div><a class="category-link" href="#">Хобби, дом и досуг</a></div>
+        <div><a class="category-link" href="#">Научно-популярные книги</a></div>
+        <div><a class="category-link" href="#">Здоровье, красота и спорт</a></div>
+        <div><a class="category-link" href="#">Учебная литература</a></div>
+        <div><a class="category-link" href="#">Детские книги</a></div>
+        <div><a class="category-link" href="#">Публицистика</a></div>
+        <div><a class="category-link" href="#">Религия и эзотерика</a></div>
+        <div><a class="category-link" href="#">Путешествия</a></div>
+        <div><a class="category-link" href="#">Гуманитарные и общественные науки</a></div>
+        <div><a class="category-link" href="#">Журналы и газеты</a></div>
+
+    </aside>
+
+<!--   контент -->
+    <main class="main">
+        <div class="book">Product 1</div>
+        <div class="book">Product 2</div>
+        <div class="book">Product 3</div>
+        <div class="book">Product 4</div>
+        <div class="book">Product 5</div>
+        <div class="book">Product 6</div>
+    </main>
+</div>
+
+<!--footer-->
+<footer class="footer">
+    <div class="company-inf">
+        <div class="div-footer"><h3>Книжный магазин "Апысь"</h3></div>
+        <div>"Апысь" - крупнейшая сеть книжных магазинов, успешно работающих от Кильдебяк до пос. Лесхоз</div>
+        <div>А ещё это - крупный интернет-магазин книг. В нем вы можете заказывать книги в любое время года</div>
+        <div>Купив книгу в магазине "Апысь", вы становитесь её обладателем!</div>
+    </div>
+    <div class="menu">
+        <div><a th:href="#">Главная</a></div>
+        <div class="item-menu"><a th:href="#">Бестселлер</a></div>
+        <div class="item-menu"><a th:href="#">Предзаказ</a></div>
+        <div class="item-menu"><a th:href="#">Преимущества</a></div>
+        <div class="item-menu"><a th:href="#">Каталог</a></div>
+        <div class="item-menu"><a th:href="#">О нас</a></div>
+        <div class="item-menu"><a th:href="#">Контакты</a></div>
+        <div class="item-menu"><a th:href="#">Обратная связь</a></div>
+    </div>
+    <div class="contacts">
+        <div class="item-menu">КГЭУ</div>
+        <div class="item-menu">гр. ЗТРСм-1-23</div>
+        <div class="item-menu">Слепченко Александр Сергеевич</div>
+        <div class="contacts-info">
+            <a href="#"><img class="phone" src="/static/phone.svg"/></a>
+            <img class="telegram" src="/static/telegram.svg"/>
+            <img class="email" src="/static/email.svg"/>
+            <img class="github" src="/static/github.svg"/>
+        </div>
+    </div>
+
+</footer>
 </body>
 </html>

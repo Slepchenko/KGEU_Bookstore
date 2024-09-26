@@ -1,7 +1,9 @@
 body {
-    margin: 0;
+    max-width: 1500px;
+    margin: 0 auto;
     width: 100vw;
     height: 100vh;
+    background-color: #777;
 }
 
 .header {
@@ -9,13 +11,13 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 15%;
+    height: 12%;
     background: #555;
 }
 
 .logo {
     margin-left: 30px;
-    width: 50px;
+    width: 150px;
 }
 
 .avatar {
@@ -29,8 +31,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 5%;
+    height: 3%;
     background: #222;
+}
+
+.nav a {
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: white;
 }
 
 .content {
@@ -44,13 +53,6 @@ body {
     width: 20%;
 }
 
-.aside a {
-    display: inline-block;
-    margin-top: 5px;
-    margin-left: 5px;
-    color: white;
-}
-
 .main {
     background: #888;
     width: 80%;
@@ -58,11 +60,15 @@ body {
 
 .footer {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     width: 100%;
-    height: 10%;
+    height: 15%;
     background: #444;
     font-size: 10 px;
     color: white;
+}
+
+.div-footer {
+    font-family: RobotoBold
 }

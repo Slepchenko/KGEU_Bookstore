@@ -1,13 +1,15 @@
 package kgeu.slepchenko.bookstore.model;
-import javax.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import javax.persistence.*;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "book")
-public class Book {
+@Table(name = "communicate")
+public class Communicate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,15 +17,5 @@ public class Book {
     private int id;
 
     private String name;
-
-    private String author;
-
-    private String description;
-
-    private int price;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
 
 }
