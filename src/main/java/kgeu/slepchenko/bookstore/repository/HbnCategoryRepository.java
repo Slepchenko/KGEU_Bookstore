@@ -1,6 +1,5 @@
 package kgeu.slepchenko.bookstore.repository;
 
-import kgeu.slepchenko.bookstore.model.Book;
 import kgeu.slepchenko.bookstore.model.Category;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -29,7 +28,10 @@ public class HbnCategoryRepository implements CategoryRepository {
     }
 
     @Override
-    public Collection<Category> findByName(String name) {
-        return null;
+    public Optional<Category> findByName(String name) {
+        return crudRepository.optional(
+                "from Category where name = :fName",
+                Category.class,
+                Map.of("fId", name));
     }
 }

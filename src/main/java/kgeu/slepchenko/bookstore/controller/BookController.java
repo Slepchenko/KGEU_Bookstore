@@ -21,6 +21,13 @@ public class BookController {
         return "/";
     }
 
+    @GetMapping("/allPriorityBook")
+    public String getAllPriorityBook(Model model) {
+        System.err.println(bookService.findByCategory("Психология").isEmpty());
+        model.addAttribute("books", bookService.findByCategory("Психология"));
+        return "/test";
+    }
+
     @GetMapping("/{id}")
     public String getBookById(@PathVariable int id, Model model) {
         model.addAttribute("book", bookService.findById(id));

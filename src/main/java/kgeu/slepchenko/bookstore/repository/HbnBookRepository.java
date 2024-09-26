@@ -29,6 +29,9 @@ public class HbnBookRepository implements BookRepository {
 
     @Override
     public Collection<Book> findByCategory(String categoryName) {
-        return null;
+        return crudRepository.query(
+                "from Book f join fetch f.category where f.category.name = :category_name",
+                Book.class,
+                Map.of("category_name", categoryName));
     }
 }

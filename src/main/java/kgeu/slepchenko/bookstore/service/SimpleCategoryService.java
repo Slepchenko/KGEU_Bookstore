@@ -25,7 +25,7 @@ public class SimpleCategoryService implements CategoryService {
     }
 
     @Override
-    public Collection<Category> findByName(String name) {
+    public Optional<Category> findByName(String name) {
         return categoryRepository.findByName(name);
     }
 }

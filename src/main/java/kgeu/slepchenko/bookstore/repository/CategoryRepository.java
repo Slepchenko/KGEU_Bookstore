@@ -11,6 +11,6 @@ public interface CategoryRepository {
 
     Optional<Category> findById(int id);
 
-    Collection<Category> findByName(String name);
+    Optional<Category> findByName(String name);
 
 }
