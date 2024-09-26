@@ -14,10 +14,10 @@ public class BookController {
 
     private final BookService bookService;
 
-    @GetMapping("/allBooks")
-    public String getAllBooks(Model model) {
-        model.addAttribute("books", bookService.findAll());
-        return "/index";
-    }
+//    @GetMapping("/allBooks")
+//    public String getAllBooks(Model model) {
+//        model.addAttribute("books", bookService.findAll());
+//        return "/index";
+//    }
 
 }

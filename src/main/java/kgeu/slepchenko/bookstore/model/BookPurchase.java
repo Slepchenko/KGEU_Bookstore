@@ -14,6 +14,9 @@ import java.util.List;
 @Table(name = "book_purchase")
 public class BookPurchase {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private int id;
 
     private String name;

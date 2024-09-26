@@ -1,7 +1,6 @@
 package kgeu.slepchenko.bookstore.repository;
 
 import kgeu.slepchenko.bookstore.model.Book;
-import kgeu.slepchenko.bookstore.service.BookService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 

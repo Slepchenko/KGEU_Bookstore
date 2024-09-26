@@ -1,5 +1,7 @@
 package kgeu.slepchenko.bookstore.model;
 
+import javax.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
