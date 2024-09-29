@@ -20,10 +20,10 @@ public class Book {
 
     private String description;
 
-    private int price;
-
+    @Column(name = "image_url")
     private String imageUrl;
 
+    private int price;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
