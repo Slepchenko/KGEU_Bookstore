@@ -83,17 +83,18 @@
             </div>
         </div>
         <div class="pages">pages</div>
-<!--        <div class="pagination">-->
-<!--            <a th:if="${currentPage > 1}" th:href="@{/books/{page}(page=${currentPage - 1})}">Previous</a>-->
+        <h1>Books - Page <span th:text="${currentPage}"></span></h1>
+        <div class="pagination">
+            <a th:if="${currentPage > 1}" th:href="@{/{pageNumber}(pageNumber=${currentPage - 1})}">Previous</a>
 
-<!--            <span th:each="pageNum : ${#numbers.sequence(1, totalPages)}">-->
-<!--            <a th:href="@{/books/{page}(page=${pageNum})}"-->
-<!--               th:text="${pageNum}"-->
-<!--               th:classappend="${pageNum == currentPage} ? 'active' : ''"></a>-->
-<!--        </span>-->
+            <span th:each="pageNum : ${#numbers.sequence(1, totalPages)}">
+            <a th:href="@{/{pageNumber}(pageNumber=${pageNum})}"
+               th:text="${pageNum}"
+               th:classappend="${pageNum == currentPage} ? 'active' : ''"></a>
+        </span>
 
-<!--            <a th:if="${currentPage < totalPages}" th:href="@{/books/{page}(page=${currentPage + 1})}">Next</a>-->
-<!--        </div>-->
+            <a th:if="${currentPage < totalPages}" th:href="@{/{pageNumber}(pageNumber=${currentPage + 1})}">Next</a>
+        </div>
     </main>
 </div>
 
