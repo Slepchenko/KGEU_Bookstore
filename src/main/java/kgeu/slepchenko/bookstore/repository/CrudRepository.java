@@ -86,6 +86,18 @@ public class CrudRepository {
         return tx(command::test);
     }
 
+    public <T> List<T> query(String query, Class<T> cl, int page, int size) {
+        int offset = (page - 1) * size;
+        Function<Session, List<T>> command = session -> {
+            var sq = session
+                    .createQuery(query, cl);
+                sq.setFirstResult(offset);
+                sq.setMaxResults(size);
+            return sq.list();
+        };
+        return tx(command);
+    }
+
     public <T> T tx(Function<Session, T> command) {
         Session session = sf.openSession();
         Transaction transaction = null;
@@ -102,6 +114,15 @@ public class CrudRepository {
         } finally {
             session.close();
         }
+    }
+
+    public <T> Optional<T> optional(String query, Class<T> cl) {
+        Function<Session, Optional<T>> command = session -> {
+            var sq = session
+                    .createQuery(query, cl);
+            return sq.uniqueResultOptional();
+        };
+        return tx(command);
     }
 
 }

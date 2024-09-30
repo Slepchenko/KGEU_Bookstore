@@ -7,18 +7,9 @@
     justify-content: space-between;
     gap: 30px;
     margin: 20px;
-background: gray;
+    background: gray;
 }
 
-.book {
-    flex: 1 1 calc(30% - 20px);
-    box-sizing: border-box;
-    padding: 20px;
-    background-color: #f8f8f8;
-    text-align: center;
-    border: 1px solid black;
-    background: 777;
-}
 
 .books-category {
     margin-top: 30px;
@@ -33,4 +24,49 @@ background: gray;
     margin-left: 10px;
     text-decoration: none;
     color: black;
+}
+
+.data {
+    display: flex;
+    height: 95%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.book {
+    width: 30%; /* Каждая книга занимает 30% ширины контейнера */
+    height: 50%;
+    padding: 10px;
+    margin-bottom: 20px; /* Отступы между строками */
+    box-sizing: border-box; /* Чтобы padding не влиял на ширину */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white
+}
+
+.book-img {
+    margin-right: 20px;
+}
+
+.book-img img {
+    max-width: 180px;
+    height: auto;
+}
+
+.bl1 {
+    display: flex;
+}
+
+.price {
+    font-family: RobotoBold;
+    font-size: 25px;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-name {
+    margin-top: 20px;
+    font-family: RobotoBold;
 }

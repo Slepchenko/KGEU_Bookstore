@@ -33,7 +33,6 @@
         <input class="search" id="search" name="search" placeholder="поиск..." required>
         <button class="search-btn"><a>&#128269;</a></button>
     </div>
-    <img class="avatar" src="/images/2.png"/>
 </header>
 
 <!--Панель навигации Меню-->
@@ -57,7 +56,8 @@
         <table class="table">
             <tr th:each="category: ${categories}">
                 <div>
-                    <a class="category-link" th:text="${category.name}" th:href="@{/categories/{cId}(cId=${category.id})}"></a>
+                    <a class="category-link" th:text="${category.name}"
+                       th:href="@{/categories/{cId}(cId=${category.id})}"></a>
                 </div>
             </tr>
         </table>
@@ -67,12 +67,33 @@
 
     <!--   контент -->
     <main class="main">
-        <div class="book">Product 1</div>
-        <div class="book">Product 2</div>
-        <div class="book">Product 3</div>
-        <div class="book">Product 4</div>
-        <div class="book">Product 5</div>
-        <div class="book">Product 6</div>
+        <div class="data">
+            <div th:each="b: ${books}" class="book">
+                <div class="bl1">
+                    <div class="book-img">
+                        <img th:src="${b.imageUrl}" alt="Загрузка картинки"/>
+                    </div>
+                    <div class="book-info">
+                        <div class="book-author" th:text="${b.author}"></div>
+                        <div class="price" th:text="${b.price + ' &#8381;'}"></div>
+                    </div>
+                </div>
+                <div class="book-name" th:text="${b.name}"></div>
+
+            </div>
+        </div>
+        <div class="pages">pages</div>
+<!--        <div class="pagination">-->
+<!--            <a th:if="${currentPage > 1}" th:href="@{/books/{page}(page=${currentPage - 1})}">Previous</a>-->
+
+<!--            <span th:each="pageNum : ${#numbers.sequence(1, totalPages)}">-->
+<!--            <a th:href="@{/books/{page}(page=${pageNum})}"-->
+<!--               th:text="${pageNum}"-->
+<!--               th:classappend="${pageNum == currentPage} ? 'active' : ''"></a>-->
+<!--        </span>-->
+
+<!--            <a th:if="${currentPage < totalPages}" th:href="@{/books/{page}(page=${currentPage + 1})}">Next</a>-->
+<!--        </div>-->
     </main>
 </div>
 
@@ -85,7 +106,7 @@
         <div>Купив книгу в магазине "Апысь", вы становитесь её обладателем!</div>
     </div>
     <div class="menu">
-        <div class="item-menu"><a th:href="@{/books/allPriorityBook}">Главная</a></div>
+        <div class="item-menu"><a th:href="@{/books/getAllBooksSize}">Главная</a></div>
         <div class="item-menu"><a th:href="@{/index}">Бестселлер</a></div>
         <div class="item-menu"><a th:href="@{/index}">Предзаказ</a></div>
         <div class="item-menu"><a th:href="@{/index}">Преимущества</a></div>

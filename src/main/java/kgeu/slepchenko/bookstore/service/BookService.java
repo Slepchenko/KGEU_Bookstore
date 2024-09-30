@@ -13,4 +13,8 @@ public interface BookService {
 
     Collection<Book> findByCategory(String categoryName);
 
+    Collection<Book> findByPagination(int page, int size);
+
+    long getAllBooksSize();
+
 }

@@ -1,5 +1,6 @@
 package kgeu.slepchenko.bookstore.service;
 
+import kgeu.slepchenko.bookstore.model.Book;
 import kgeu.slepchenko.bookstore.model.Category;
 
 import java.util.Collection;

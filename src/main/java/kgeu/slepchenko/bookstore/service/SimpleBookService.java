@@ -5,7 +5,9 @@ import kgeu.slepchenko.bookstore.repository.BookRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,5 +29,16 @@ public class SimpleBookService implements BookService {
     @Override
     public Collection<Book> findByCategory(String categoryName) {
         return bookRepository.findByCategory(categoryName);
+    }
+
+    @Override
+    public Collection<Book> findByPagination(int page, int size) {
+        List<Book> books = new ArrayList<>(bookRepository.findByPagination(page, size));
+        return books;
+    }
+
+    @Override
+    public long getAllBooksSize() {
+        return bookRepository.getAllBooksSize();
     }
 }

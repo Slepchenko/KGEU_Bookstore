@@ -34,4 +34,14 @@ public class HbnBookRepository implements BookRepository {
                 Book.class,
                 Map.of("category_name", categoryName));
     }
+
+    @Override
+    public Collection<Book> findByPagination(int page, int size) {
+        return crudRepository.query("from Book", Book.class, page, size);
+    }
+
+    @Override
+    public long getAllBooksSize() {
+        return crudRepository.optional("select count(b) from Book b", Long.class).get();
+     }
 }

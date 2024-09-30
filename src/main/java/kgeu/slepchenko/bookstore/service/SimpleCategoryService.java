@@ -28,4 +28,5 @@ public class SimpleCategoryService implements CategoryService {
     public Optional<Category> findByName(String name) {
         return categoryRepository.findByName(name);
     }
+
 }
