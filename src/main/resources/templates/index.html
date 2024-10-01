@@ -57,7 +57,7 @@
             <tr th:each="category: ${categories}">
                 <div>
                     <a class="category-link" th:text="${category.name}"
-                       th:href="@{/categories/{cId}(cId=${category.id})}"></a>
+                       th:href="@{books/allCategoryBook}"></a>
                 </div>
             </tr>
         </table>
@@ -83,7 +83,7 @@
             </div>
         </div>
         <div class="pages">pages</div>
-<!--        <h1>Books - Page <span th:text="${currentPage}"></span></h1>-->
+        <h1>Books - Page <span th:text="${currentPage}"></span></h1>
 <!--        <div class="pagination">-->
 <!--            <a th:if="${currentPage > 1}" th:href="@{/{pageNumber}(pageNumber=${currentPage - 1})}">Previous</a>-->
 

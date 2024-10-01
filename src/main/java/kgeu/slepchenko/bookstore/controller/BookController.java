@@ -21,10 +21,10 @@ public class BookController {
 //        return "/";
 //    }
 
-    @GetMapping("/allPriorityBook")
-    public String getAllPriorityBook(Model model) {
-        model.addAttribute("books", bookService.findByCategory("Психология"));
-        return "/test";
+    @GetMapping("/allCategoryBook")
+    public String getAllCategoryBook(Model model) {
+        model.addAttribute("allBooks", bookService.findByCategory("Психология"));
+        return "/";
     }
 
 //    @GetMapping("/{id}")

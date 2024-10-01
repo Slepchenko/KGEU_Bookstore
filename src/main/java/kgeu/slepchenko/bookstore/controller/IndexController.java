@@ -17,12 +17,14 @@ public class IndexController {
     private final BookService bookService;
 
     @GetMapping({"/", "/index"})
-    public String getIndex(Model model, @PathVariable("pageNumber") int pageNumber) {
+    public String getIndex(Model model/*, @PathVariable("pageNumber") int pageNumber*/) {
         model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("books", bookService.findByPagination(pageNumber, 6));
+//        model.addAttribute("books", bookService.findByPagination(pageNumber, 6));
+        model.addAttribute("books", bookService.findByPagination(1, 6));
         long totalBooks = bookService.getAllBooksSize();
         int totalPages = (int) Math.ceil((double) totalBooks / 6);
-        model.addAttribute("currentPage", pageNumber);
+//        model.addAttribute("currentPage", pageNumber);
+        model.addAttribute("currentPage", 1);
         model.addAttribute("totalPages", totalPages);
         return "index";
     }
