@@ -16,12 +16,10 @@ public class IndexController {
 
     private final BookService bookService;
 
-    private int page = 1;
-
     @GetMapping({"/", "/index"})
     public String getIndex(Model model) {
         model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("books", bookService.findByPagination(page, 6));
+        model.addAttribute("books", bookService.findByPagination(1, 6));
         return "index";
     }
 
