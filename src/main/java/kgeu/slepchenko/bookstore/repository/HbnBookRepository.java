@@ -30,14 +30,23 @@ public class HbnBookRepository implements BookRepository {
     @Override
     public Collection<Book> findByCategory(String categoryName) {
         return crudRepository.query(
-                "from Book f join fetch f.category where f.category.name = :category_name",
+                "from Book f join fetch f.category where f.category.name like :fCategory_name",
                 Book.class,
-                Map.of("category_name", categoryName));
+                Map.of("fCategory_name", categoryName));
     }
 
     @Override
     public Collection<Book> findByPagination(int page, int size) {
         return crudRepository.query("from Book", Book.class, page, size);
+    }
+
+    public Collection<Book> findByCategoryPagination(String categoryName, int page, int size) {
+        return crudRepository.query(
+                "from Book f join fetch f.category where f.category.name like :fCategory_name",
+                Book.class,
+                Map.of("fCategory_name", categoryName),
+                page,
+                size);
     }
 
     @Override

@@ -17,4 +17,6 @@ public interface BookService {
 
     long getAllBooksSize();
 
+    Collection<Book> findByCategoryPagination(String categoryName, int page, int size);
+
 }

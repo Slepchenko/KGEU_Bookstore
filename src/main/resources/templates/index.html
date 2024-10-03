@@ -57,12 +57,10 @@
             <tr th:each="category: ${categories}">
                 <div>
                     <a class="category-link" th:text="${category.name}"
-                       th:href="@{books/allCategoryBook}"></a>
+                       th:href="@{/books/getCategoryPagination(cat=${category.name})}"></a>
                 </div>
             </tr>
         </table>
-
-
     </aside>
 
     <!--   контент -->
@@ -83,7 +81,7 @@
             </div>
         </div>
         <div class="pages">pages</div>
-        <h1>Books - Page <span th:text="${currentPage}"></span></h1>
+<!--        <h1>Books - Page <span th:text="${currentPage}"></span></h1>-->
 <!--        <div class="pagination">-->
 <!--            <a th:if="${currentPage > 1}" th:href="@{/{pageNumber}(pageNumber=${currentPage - 1})}">Previous</a>-->
 
@@ -107,7 +105,7 @@
         <div>Купив книгу в магазине "Апысь", вы становитесь её обладателем!</div>
     </div>
     <div class="menu">
-        <div class="item-menu"><a th:href="@{/books/getAllBooksSize}">Главная</a></div>
+        <div class="item-menu"><a th:href="@{/books/getget}">Главная</a></div>
         <div class="item-menu"><a th:href="@{/index}">Бестселлер</a></div>
         <div class="item-menu"><a th:href="@{/index}">Предзаказ</a></div>
         <div class="item-menu"><a th:href="@{/index}">Преимущества</a></div>

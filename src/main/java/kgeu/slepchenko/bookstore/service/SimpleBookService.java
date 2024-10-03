@@ -41,4 +41,9 @@ public class SimpleBookService implements BookService {
     public long getAllBooksSize() {
         return bookRepository.getAllBooksSize();
     }
+
+    @Override
+    public Collection<Book> findByCategoryPagination(String categoryName, int page, int size) {
+        return bookRepository.findByCategoryPagination(categoryName, page, size);
+    }
 }
