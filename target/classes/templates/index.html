@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 
-    <!--  Зависимости Bootstrap-->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -36,6 +36,7 @@
     </div>
 </header>
 
+
 <!--Панель навигации Меню-->
 <nav class="nav">
     <div><a href="#modal2">Главная</a></div>
@@ -48,6 +49,7 @@
     <div><a>Контакты</a></div>
     <div><a>Обратная связь</a></div>
 </nav>
+
 
 <!--Content -->
 <div class="content">
@@ -65,37 +67,34 @@
         </table>
     </aside>
 
+
     <!--   контент -->
     <main class="main">
         <div class="data">
             <div th:each="b: ${books}" class="book">
-<!--                <a class="link-book" th:href="@{books/{bId}(bId=${b.id})}">-->
-                <a href="#modal">
-                <div class="bl1" >
-                    <div class="book-img">
-                        <img th:src="${b.imageUrl}" alt="Загрузка картинки"/>
+                <!--                <a class="link-book" th:href="@{books/{bId}(bId=${b.id})}">-->
+                <a class="link-book" href="#modal">
+                    <div class="bl1">
+                        <div class="book-img">
+                            <img th:src="${b.imageUrl}" alt="Загрузка картинки"/>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-author" th:text="${b.author}"></div>
+                            <div class="price" th:text="${b.price + ' &#8381;'}"></div>
+                        </div>
                     </div>
-                    <div class="book-info">
-                        <div class="book-author" th:text="${b.author}"></div>
-                        <div class="price" th:text="${b.price + ' &#8381;'}"></div>
-                    </div>
-                </div>
-                <div class="book-name" th:text="${b.name}"></div>
+                    <div class="book-name" th:text="${b.name}"></div>
                 </a>
             </div>
         </div>
         <div class="pages">
-            <!-- Пагинация -->
             <div class="pagination">
-                <!-- Кнопка для предыдущей страницы -->
                 <span th:if="${currentPage > 1}">
             <a th:if="${category != null}"
                th:href="@{/books/getCategoryPagination(page=${currentPage - 1}, cat=${category})}">Предыдущая</a>
             <a th:unless="${category != null}"
                th:href="@{/books/bookByPagination(page=${currentPage - 1})}">Предыдущая</a>
-        </span>
-
-                <!-- Нумерация страниц -->
+                </span>
                 <span th:each="i : ${#numbers.sequence(1, totalPages)}">
             <a th:if="${category != null}"
                th:href="@{/books/getCategoryPagination(page=${i}, cat=${category})}"
@@ -105,15 +104,13 @@
                th:href="@{/books/bookByPagination(page=${i})}"
                th:text="${i}"
                th:classappend="${i == currentPage} ? 'active' : ''"></a>
-        </span>
-
-                <!-- Кнопка для следующей страницы -->
+                </span>
                 <span th:if="${currentPage < totalPages}">
             <a th:if="${category != null}"
                th:href="@{/books/getCategoryPagination(page=${currentPage + 1}, cat=${category})}">Следующая</a>
             <a th:unless="${category != null}"
                th:href="@{/books/bookByPagination(page=${currentPage + 1})}">Следующая</a>
-        </span>
+                </span>
             </div>
         </div>
 
@@ -132,6 +129,7 @@
         <a href=""></a>
     </div>
 </div>
+
 
 <!--footer-->
 <footer class="footer">
