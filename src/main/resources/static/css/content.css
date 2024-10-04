@@ -41,42 +41,48 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background: white
-
 }
 
 .book-img {
- flex: 0 0 30%; /* Установить ширину для блока с изображением на 60% */
-   max-width: 100%;/* Ограничить максимальную ширину 60% */
+    flex: 0 0 30%;
+    max-width: 100%;
     margin-right: 20px;
-
-
 }
 
 .book-img img {
     max-width: 150%;
     height: auto;
-
 }
 
 .bl1 {
     display: flex;
-justify-content: space-between; /* Равномерно распределить пространство между блоками */
-    align-items: flex-start; /* Выровнять элементы по верхней части */
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .price {
     font-family: RobotoBold;
     font-size: 25px;
-
 }
 
 .book-info {
-     flex: 0 0 50%; /* Установить ширину для блока с информацией на 40% */
-       max-width: 50%; /* Ограничить максимальную ширину 40% */
-    flex-direction: column;
+     flex: 0 0 50%;
+     max-width: 50%;
+     flex-direction: column;
 }
 
 .book-name {
     margin-top: 20px;
     font-family: RobotoBold;
+}
+
+.link-book {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.pagination a.active {
+    font-weight: bold;
+    color: red;
 }

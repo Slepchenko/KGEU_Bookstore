@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @AllArgsConstructor
@@ -18,18 +19,18 @@ public class IndexController {
 
     @GetMapping({"/", "/index"})
     public String getIndex(Model model) {
+        int page = 1;
+        int size = 6;
+        model.addAttribute("books", bookService.findByPagination(page, size));
+        long totalBooks = bookService.getAllBooksSize();
+        int totalPages = (int) Math.ceil((double) totalBooks / size);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("books", bookService.findByPagination(1, 6));
-        return "index";
-    }
-
-    @GetMapping("/startPage")
-    public String getStart(Model model, @PathVariable("pageNumber") int pageNumber) {
-        long totalBooks = bookService.getAllBooksSize();
-        int totalPages = (int) Math.ceil((double) totalBooks / 6);
-        model.addAttribute("currentPage", pageNumber);
-        model.addAttribute("totalPages", totalPages);
-        return "index";
+        model.addAttribute("category", null);
+        return "/index";
     }
 
 }

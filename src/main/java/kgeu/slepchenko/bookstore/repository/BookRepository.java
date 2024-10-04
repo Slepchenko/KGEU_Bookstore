@@ -19,4 +19,6 @@ public interface BookRepository {
 
     Collection<Book> findByCategoryPagination(String categoryName, int page, int size);
 
+    long getAllBooksSizeByCategory(String category);
+
 }

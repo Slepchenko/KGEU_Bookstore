@@ -51,6 +51,12 @@ public class HbnBookRepository implements BookRepository {
 
     @Override
     public long getAllBooksSize() {
+//        return crudRepository.optional("select count(b) from Book b", Long.class).get();
         return crudRepository.optional("select count(b) from Book b", Long.class).get();
+     }
+
+     @Override
+    public long getAllBooksSizeByCategory(String category) {
+        return crudRepository.optional("select count(b) from Book b where b.category.name like :fCategory", Long.class, Map.of("fCategory", category)).get();
      }
 }
