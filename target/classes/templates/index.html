@@ -73,7 +73,7 @@
         <div class="data">
             <div th:each="b: ${books}" class="book">
                 <!--                <a class="link-book" th:href="@{books/{bId}(bId=${b.id})}">-->
-                <a class="link-book" href="#modal-book">
+                <a class="link-book" th:href="@{/books/modal-book/{id}(id=${b.id})}">
                     <div class="bl1">
                         <div class="book-img">
                             <img th:src="${b.imageUrl}" alt="Загрузка картинки"/>
@@ -116,22 +116,8 @@
             </div>
         </div>
 
-
     </main>
 </div>
-<!--<div id="modal1" class="modal">-->
-<!--    <div class="modal-content">-->
-<!--        <a href="#" class="close">&times;</a>-->
-<!--        <h2>О нас</h2>-->
-<!--        <p>Здесь содержится информация о нас.</p>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div id="book-modal" class="book-modal">-->
-<!--    <div class="modal-book-content">-->
-<!--        <a href=""></a>-->
-<!--    </div>-->
-<!--</div>-->
-
 
 <!--footer-->
 <footer class="footer">
@@ -166,7 +152,7 @@
 
 </footer>
 
-<div th:replace="modals :: modal-content"></div>
+<!--<div th:replace="modals :: modal-content"></div>-->
 
 </body>
 </html>

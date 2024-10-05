@@ -63,4 +63,11 @@ public class BookController {
         return "test";
     }
 
+    @GetMapping("/modal-book/{id}")
+    public String modalBook(@PathVariable int id, Model model) {
+        System.err.println(id);
+        model.addAttribute("book", bookService.findById(id).get());
+        return "modals";
+    }
+
 }
