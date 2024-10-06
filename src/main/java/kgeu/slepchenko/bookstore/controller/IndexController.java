@@ -26,7 +26,7 @@ public class IndexController {
         int totalPages = (int) Math.ceil((double) totalBooks / size);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
-        model.addAttribute("categories", categoryService.findAll());
+//        model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("books", bookService.findByPagination(1, 6));
         model.addAttribute("category", null);

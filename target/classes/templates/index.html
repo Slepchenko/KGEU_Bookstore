@@ -73,7 +73,8 @@
         <div class="data">
             <div th:each="b: ${books}" class="book">
                 <!--                <a class="link-book" th:href="@{books/{bId}(bId=${b.id})}">-->
-                <a class="link-book" th:href="@{/books/modal-book/{id}(id=${b.id})}">
+<!--                <a class="link-book" th:href="@{/books/modal-book/{id}(id=${b.id})}">-->
+                <a class="link-book" th:href="@{/books/{id}(id=${b.id})}" data-bs-toggle="modal" data-bs-target="#bookModal">
                     <div class="bl1">
                         <div class="book-img">
                             <img th:src="${b.imageUrl}" alt="Загрузка картинки"/>
@@ -87,6 +88,18 @@
                 </a>
             </div>
         </div>
+
+        <div id="bookModal" class="modal fade" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-body"> sdfsdfsdfsdf
+                        <div th:text="${bookm.name}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 <!--        Номера страниц-->
         <div class="pages">

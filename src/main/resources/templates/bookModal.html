@@ -20,28 +20,19 @@
   <title>Модал окна</title>
 </head>
 <body>
-<!--<div th:fragment="modal-content">-->
-<!--  <div id="modal-book" class="modal">-->
-<!--    <div class="modal-content">-->
-<!--      <a href="#" class="close">&times;</a>-->
-<!--      <h2 th:text="${b.name}"></h2>-->
-<!--      <p>Здесь содержится информация о нас и все.</p>-->
-<!--    </div>-->
-
-<!--  </div>-->
-<!--</div>-->
-
-<div id="modal-book" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div class="modal-body">
-      <img th:src="${book.imageUrl}" alt="Картинка книги" />
-      <div th:text="'Автор: ' + ${book.author}"></div>
-      <div th:text="'Цена: ' + ${book.price} + ' &#8381;'"></div>
-      <div th:text="'Название: ' + ${book.name}"></div>
+<div th:fragment="modal-content">
+  <div id="bookModal" class="modal">
+    <div class="modal-content">
+      <h2 th:text="${book.title}"></h2>
+      <p>Автор: <span th:text="${book.author}"></span></p>
+      <p>Описание: <span th:text="${book.description}"></span></p>
+      <button class="close-modal">Закрыть</button>
     </div>
+
   </div>
 </div>
+
+
 
 </body>
 </html>
