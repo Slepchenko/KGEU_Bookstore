@@ -59,15 +59,10 @@ public class BookController {
 
     @GetMapping("/{id}")
     public String getBookById(Model model, @PathVariable int id) {
-        model.addAttribute("bookm", bookService.findById(id).get());
-        return "test";
-    }
-
-    @GetMapping("/modal/{id}")
-    public String modalBook(@PathVariable int id, Model model) {
-        System.err.println(id);
-        model.addAttribute("bookM", bookService.findById(id).get());
-        return "bookModal";
+        System.err.println("proverka");
+        System.err.println(bookService.findById(id).get().getId());
+        model.addAttribute("book", bookService.findById(id).get());
+        return "book";
     }
 
 }

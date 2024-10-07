@@ -16,13 +16,13 @@ public class HbnBookRepository implements BookRepository {
 
     @Override
     public Collection<Book> findAll() {
-        return crudRepository.query("from Book", Book.class);
+        return crudRepository.query("from Book f join fetch f.category", Book.class);
     }
 
     @Override
     public Optional<Book> findById(int id) {
         return crudRepository.optional(
-                "from Book where id = :fId",
+                "from Book f join fetch f.category where f.id = :fId",
                 Book.class,
                 Map.of("fId", id));
     }
@@ -37,7 +37,7 @@ public class HbnBookRepository implements BookRepository {
 
     @Override
     public Collection<Book> findByPagination(int page, int size) {
-        return crudRepository.query("from Book", Book.class, page, size);
+        return crudRepository.query("from Book f join fetch f.category", Book.class, page, size);
     }
 
     public Collection<Book> findByCategoryPagination(String categoryName, int page, int size) {
@@ -51,7 +51,6 @@ public class HbnBookRepository implements BookRepository {
 
     @Override
     public long getAllBooksSize() {
-//        return crudRepository.optional("select count(b) from Book b", Long.class).get();
         return crudRepository.optional("select count(b) from Book b", Long.class).get();
      }
 
