@@ -59,8 +59,6 @@ public class BookController {
 
     @GetMapping("/{id}")
     public String getBookById(Model model, @PathVariable int id) {
-        System.err.println("proverka");
-        System.err.println(bookService.findById(id).get().getId());
         model.addAttribute("book", bookService.findById(id).get());
         return "book";
     }

@@ -37,15 +37,14 @@
 
 <!--Панель навигации Меню-->
 <nav class="nav">
-    <div><a href="#modal2">Главная</a></div>
-    <div><a href="#modal1">О нас</a></div>
+    <div><a class="menu-link" th:href="@{/index}">Главная</a></div>
+    <div><a href="#modal-about-us">О нас</a></div>
     <div><a>Бестселлер</a></div>
     <div><a>Предзаказ</a></div>
     <div><a>Преимущества</a></div>
     <div><a>Каталог</a></div>
-    <div><a>О нас</a></div>
-    <div><a>Контакты</a></div>
-    <div><a>Обратная связь</a></div>
+    <div><a href="#modal-contacts">Контакты</a></div>
+    <div><a href="#modal-feedback">Обратная связь</a></div>
 </nav>
 
 
@@ -161,16 +160,18 @@
 </div>
 
 <div id="modal-contacts" class="modal">
-    <div class="modal-book-content">
-        <a href=""></a>
+    <div class="modal-content">
+        <a href="#" class="close">&times;</a>
+        <h2>контакт</h2>
+        <p></p>
     </div>
 </div>
 
 <div id="modal-feedback" class="modal">
     <div class="modal-content">
         <a href="#" class="close">&times;</a>
-        <h2>О нас</h2>
-        <p>Здесь содержится информация о нас.</p>
+        <h2>обратная связь</h2>
+        <p></p>
     </div>
 </div>
 
