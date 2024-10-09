@@ -4,16 +4,16 @@
 }
 .book-block {
     display: flex;
-    max-width: 1500px; /* Фиксированная ширина */
+    max-width: 1500px;
 }
 
 .book-img {
-    flex: 0 0 30%; /* 40% ширины для изображения */
+    flex: 0 0 30%;
 }
 
 .book-img img {
-    width: 100%; /* Картинка растягивается по ширине */
-    height: auto; /* Высота автоматически рассчитывается */
+    width: 100%;
+    height: auto;
     margin-top: 10px;
     object-fit: cover;
 }
@@ -32,25 +32,24 @@
     display: flex;
 }
 
-
-
-.book-price-bl {
-    display: flex; /* Использует flexbox для размещения элементов в строку */
-}
-
 .book-price {
-    font-size: 1.5em; /* Размер шрифта для цены */
-    font-weight: bold; /* Жирный текст для цены */
+    font-size: 1.1em;
+    font-weight: bold;
+    color: brown;
 }
 
 .price-text {
-    font-size: 1em; /* Размер шрифта для текста "рублей" */
+    font-size: 1em;
 }
 
-.book-desc, .book-author, .book-name, .book-price {
-    margin-bottom: 10px; /* Отступы между блоками */
-    width: 150%; /* Полная ширина */
-    max-width: 1500px; /* Максимальная ширина для ограничения */
+.book-price-bl {
+    display: flex;
+}
+
+.book-desc, .book-author, .book-name, .book-price-bl {
+    margin-bottom: 10px;
+    width: 150%;
+    max-width: 1500px;
 }
 
 .book-name {
@@ -59,27 +58,27 @@
 }
 
 .btn-back {
-    background-color: #007bff; /* Цвет фона для кнопки "Назад" */
-    color: white; /* Цвет текста */
-    border: none; /* Убираем рамку */
-    padding: 10px 20px; /* Отступы внутри кнопки */
-    border-radius: 5px; /* Закругленные углы */
-    cursor: pointer; /* Указатель при наведении */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .btn-back:hover {
-    background-color: #0056b3; /* Цвет при наведении */
+    background-color: #0056b3;
 }
 
 .btn-order {
-    background-color: #28a745; /* Цвет фона для кнопки "Заказать" */
-    color: white; /* Цвет текста */
-    border: none; /* Убираем рамку */
-    padding: 10px 20px; /* Отступы внутри кнопки */
-    border-radius: 5px; /* Закругленные углы */
-    cursor: pointer; /* Указатель при наведении */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .btn-order:hover {
-    background-color: #218838; /* Цвет при наведении */
+    background-color: #218838;
 }
