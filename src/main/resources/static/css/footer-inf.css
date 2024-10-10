@@ -5,8 +5,17 @@
 }
 
 .menu {
-    margin-top: 3px;
-    margin-right: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Создаем два равных столбца */
+    column-gap: 5px; /* Устанавливаем меньший отступ между столбцами */
+    row-gap: 10px; /* Устанавливаем расстояние между строками */
+    width: 50%; /* Задаем ширину для меню */
+}
+
+.item-menu a {
+    text-align: center;
+    text-decoration: none;
+    color: white;
 }
 
 .contacts {
@@ -42,7 +51,4 @@
     margin-right: 20px;
 }
 
-.item-menu a {
-    text-decoration: none;
-    color: white;
-}
+
