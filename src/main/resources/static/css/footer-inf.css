@@ -1,15 +1,15 @@
 .company-inf {
-    margin-left: 30px;
-    margin-top: 10px;
-    margin-right: 80px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: 50px;
 }
 
 .menu {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Создаем два равных столбца */
-    column-gap: 5px; /* Устанавливаем меньший отступ между столбцами */
-    row-gap: 10px; /* Устанавливаем расстояние между строками */
-    width: 50%; /* Задаем ширину для меню */
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5px;
+    row-gap: 10px;
+    width: 50%;
 }
 
 .item-menu a {
