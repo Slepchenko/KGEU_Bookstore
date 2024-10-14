@@ -21,6 +21,7 @@
 .book-info {
     flex: 1;
     display: flex;
+    width: 1000px; /* tut pomenal*/
     padding: 20px;
 }
 
@@ -49,7 +50,7 @@
 .book-desc, .book-author, .book-name, .book-price-bl {
     margin-bottom: 10px;
     width: 150%;
-    max-width: 1500px;
+    max-width: 1000px; /* i tut */
 }
 
 .book-name {

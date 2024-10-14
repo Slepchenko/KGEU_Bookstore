@@ -9,7 +9,7 @@
     grid-template-columns: 1fr 1fr;
     column-gap: 5px;
     row-gap: 10px;
-    width: 50%;
+    width: 30%;
 }
 
 .item-menu a {
@@ -24,7 +24,7 @@
 
 .contacts-info {
     display: flex;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .telegram {
@@ -51,4 +51,7 @@
     margin-right: 20px;
 }
 
-
+.div-footer {
+    font-family: RobotoBold;
+    margin-bottom: 10;
+}
