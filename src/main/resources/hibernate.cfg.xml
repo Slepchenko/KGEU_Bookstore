@@ -17,6 +17,7 @@
         <mapping class="kgeu.slepchenko.bookstore.model.BookPurchase"/>
         <mapping class="kgeu.slepchenko.bookstore.model.Category"/>
         <mapping class="kgeu.slepchenko.bookstore.model.Feedback"/>
+        <mapping class="kgeu.slepchenko.bookstore.model.User"/>
 
     </session-factory>
 </hibernate-configuration>

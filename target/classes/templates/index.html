@@ -32,6 +32,17 @@
         <input class="search" id="search" name="search" placeholder="поиск..." required>
         <button class="search-btn"><a>&#128269;</a></button>
     </div>
+    <div class="login_bar " >
+        <div class="login1" th:if="${user.name == 'Гость'}">
+            <a class="register" th:href="@{/users/register}">Регистрация</a>
+            <a class="in" th:href="@{/users/login}">Войти</a>
+        </div>
+        <div class="login2" th:if="${user.name != 'Гость'}">
+            <a class="user_name" th:text="${user.name}"
+               th:href="@{/index}"></a>
+            <a class="out" th:href="@{/users/logout}">Выйти</a>
+        </div>
+    </div>
 </header>
 
 

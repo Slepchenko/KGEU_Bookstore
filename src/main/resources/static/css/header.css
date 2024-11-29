@@ -14,3 +14,21 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.login1 {
+    margin-right: 30px;
+}
+
+.login2 {
+    margin-right: 20px;
+}
+
+.login1 a {
+        text-decoration: none;
+        color: white;
+}
+
+.login2 a {
+        text-decoration: none;
+        color: white;
+}
