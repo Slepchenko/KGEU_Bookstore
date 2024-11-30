@@ -42,6 +42,10 @@
                th:href="@{/index}"></a>
             <a class="out" th:href="@{/users/logout}">Выйти</a>
         </div>
+        <div class="cart_bar" th:if="${user.name != 'Гость'}">
+            <a class="cart_ref" th:href="@{/shoppingCart/{id}(123456789)}">Cart
+            </a>
+        </div>
     </div>
 </header>
 

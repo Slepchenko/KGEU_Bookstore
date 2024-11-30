@@ -28,17 +28,26 @@ CREATE TABLE feedback (
  	note text
 );
 
+create table shopping_cart (
+	id SERIAL PRIMARY KEY,
+	total_price int not null default 0
+);
+
 create table users (
 	id serial primary key,
 	name varchar(50) not null,
 	email varchar(120) unique not null,
-	password varchar(120) not null
+	password varchar(120) not null,
+	shopping_cart_id int unique,
+	FOREIGN KEY (shopping_cart_id) REFERENCES shopping_cart (id) ON DELETE SET NULL
 );
 
-create table user_roles (
-	user_id int not null,
-	role_id int not null,
-	primary key (user_id, role_id),
-	foreign key (user_id) references users(id) on delete cascade,
-	foreign key (role_id) references roles(id) on delete cascade
-)
+create table cart_item (
+	id SERIAL PRIMARY KEY,
+	cart_id INT NOT NULL,
+    book_id INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    price INT NOT NULL,
+    FOREIGN KEY (cart_id) REFERENCES shopping_cart (id) ON DELETE CASCADE,
+    FOREIGN KEY (book_id) REFERENCES book (id) ON DELETE CASCADE
+);

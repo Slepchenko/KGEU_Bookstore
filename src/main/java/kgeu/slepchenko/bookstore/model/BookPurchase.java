@@ -23,6 +23,8 @@ public class BookPurchase {
 
     private LocalDateTime created = LocalDateTime.now();
 
+    private int quantity;
+
     @OneToMany
     @JoinColumn(name = "book_id")
     private List<Book> books = new ArrayList<>();
