@@ -12,6 +12,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ShoppingCart {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
@@ -25,4 +26,5 @@ public class ShoppingCart {
 
     @OneToOne(mappedBy = "shoppingCart", fetch = FetchType.LAZY)
     private User user;
+
 }

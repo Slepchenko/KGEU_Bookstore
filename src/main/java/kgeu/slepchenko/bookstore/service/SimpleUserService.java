@@ -16,7 +16,8 @@ import java.util.Optional;
 public class SimpleUserService implements UserService {
 
     private final UserRepository userRepository;
-    private final ShoppingCartRepository shoppingCartRepository;
+
+    private final ShoppingCartService shoppingCartService;
 
 
     @Override
@@ -28,35 +29,17 @@ public class SimpleUserService implements UserService {
         ShoppingCart cart = new ShoppingCart();
         cart.setTotalPrice(0);
         cart.setUser(savedUser); // Устанавливаем связь
-        shoppingCartRepository.save(cart);
+        shoppingCartService.save(cart);
 
         // Устанавливаем корзину в пользователя
         savedUser.setShoppingCart(cart);
-        return userRepository.save(savedUser);
+        return create(savedUser);
 
+    }
 
-
-
-//        User savedUser;
-//        if (user.getId() != 0) {
-//            savedUser = userRepository.findByLoginAndPassword(user.getEmail(), user.getPassword())
-//                    .orElseThrow(() -> new IllegalArgumentException("User not found"));
-//            savedUser.setName(user.getName());
-//            savedUser.setEmail(user.getEmail());
-//            savedUser.setPassword(user.getPassword());
-//        } else {
-//            savedUser = userRepository.save(user).get();
-//        }
-//
-//        // Создаем корзину для пользователя
-//        ShoppingCart cart = new ShoppingCart();
-//        cart.setTotalPrice(0);
-//        cart.setUser(savedUser); // Устанавливаем связь
-//        shoppingCartRepository.save(cart);
-//
-//        // Обновляем связь в пользователе
-//        savedUser.setShoppingCart(cart);
-//        return userRepository.save(savedUser);
+    @Override
+    public Optional<User> create(User user) {
+        return userRepository.create(user);
     }
 
     @Override

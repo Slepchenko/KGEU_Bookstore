@@ -12,4 +12,6 @@ public interface UserService {
 
     String findUserNameById(int id);
 
+    Optional<User> create(User user);
+
 }

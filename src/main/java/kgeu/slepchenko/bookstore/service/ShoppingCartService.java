@@ -1,7 +1,6 @@
 package kgeu.slepchenko.bookstore.service;
 
 import kgeu.slepchenko.bookstore.model.ShoppingCart;
-
 import java.util.Optional;
 
 public interface ShoppingCartService {
@@ -13,5 +12,4 @@ public interface ShoppingCartService {
     void updateCart(ShoppingCart cart);
 
     void deleteCart(int cartId);
-
 }

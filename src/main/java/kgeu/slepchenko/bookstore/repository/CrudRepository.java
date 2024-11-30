@@ -19,6 +19,12 @@ public class CrudRepository {
 
     private final SessionFactory sf;
 
+//    public void go(Consumer<Session> command) {
+//        tx(session -> {
+//         return (User) session
+//        });
+//    }
+
     public void run(Consumer<Session> command) {
         tx(session -> {
                     command.accept(session);
@@ -139,5 +145,14 @@ public class CrudRepository {
         };
         return tx(command);
     }
+
+//    public <T> Optional<T> optional(Consumer<Session> command) {
+//        Function<Session, Optional<T>> command = session -> {
+//            var sq = session
+//                    .createQuery(query, cl);
+//            return sq.uniqueResultOptional();
+//        };
+//        return tx(command);
+//    }
 
 }

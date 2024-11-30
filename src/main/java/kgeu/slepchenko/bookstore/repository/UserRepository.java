@@ -12,4 +12,6 @@ public interface UserRepository {
 
     String findUserNameById(int id);
 
+    Optional<User> create(User user);
+
 }

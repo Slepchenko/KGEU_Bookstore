@@ -19,6 +19,11 @@ public class HbnUserRepository implements UserRepository {
         return Optional.of(user);
     }
 
+    public Optional<User> create(User user) {
+        crudRepository.run(session -> session.merge(user));
+        return Optional.of(user);
+    }
+
     @Override
     public Optional<User> findByLoginAndPassword(String login, String password) {
         return crudRepository.optional("from User where email = :fEmail and password = :fPassword", User.class,

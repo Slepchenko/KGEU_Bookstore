@@ -1,6 +1,7 @@
 package kgeu.slepchenko.bookstore.service;
 
 import kgeu.slepchenko.bookstore.model.ShoppingCart;
+import kgeu.slepchenko.bookstore.model.User;
 import kgeu.slepchenko.bookstore.repository.ShoppingCartRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
