@@ -30,21 +30,7 @@ public class UserController {
     @PostMapping("/register")
     public String register(Model model, HttpSession session, @ModelAttribute User user) {
         AddUserModel.checkInMenu(model, session);
-//        if (user.getId() != 0) {
-//            User existingUser = userService.findByLoginAndPassword(user.getEmail(), user.getPassword()).orElseThrow(()-> new IllegalArgumentException("user not found!!!!!!!!!"));
-//            existingUser.setName(user.getName());
-//            existingUser.setEmail(user.getEmail());
-//            existingUser.setPassword(user.getPassword());
-//            System.err.println(user.getId());
-//            System.err.println(user.getName());
-//            System.err.println(user.getEmail());
-//            System.err.println(user.getPassword());
-//            System.err.println(user.getShoppingCart().getId());
-//            userService.save(existingUser);
-//        } else {
-//            userService.save(user);
-//        }
-        Optional<User> optionalUser = userService.save(user);
+        Optional<User> optionalUser = userService.create(user);
         if (optionalUser.isEmpty()) {
             model.addAttribute("message", "Пользователь с таким логином уже существует");
             return "errors/404";

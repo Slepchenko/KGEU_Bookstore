@@ -19,27 +19,20 @@ public class SimpleUserService implements UserService {
 
     private final ShoppingCartService shoppingCartService;
 
-
     @Override
     public Optional<User> save(User user) {
-
-        User savedUser = userRepository.save(user).get();
-
-        // Создаем корзину для пользователя
-        ShoppingCart cart = new ShoppingCart();
-        cart.setTotalPrice(0);
-        cart.setUser(savedUser); // Устанавливаем связь
-        shoppingCartService.save(cart);
-
-        // Устанавливаем корзину в пользователя
-        savedUser.setShoppingCart(cart);
-        return create(savedUser);
-
+        return userRepository.save(user);
     }
 
     @Override
     public Optional<User> create(User user) {
-        return userRepository.create(user);
+        User savedUser = userRepository.create(user).get();
+        ShoppingCart cart = new ShoppingCart();
+        cart.setTotalPrice(0);
+        cart.setUser(savedUser);
+        shoppingCartService.save(cart);
+        savedUser.setShoppingCart(cart);
+        return save(savedUser);
     }
 
     @Override

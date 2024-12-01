@@ -14,7 +14,6 @@ public class HbnShoppingCartRepository implements ShoppingCartRepository{
 
     @Override
     public ShoppingCart save(ShoppingCart shoppingCart) {
-
         crudRepository.run(session -> session.persist(shoppingCart));
         return shoppingCart;
     }

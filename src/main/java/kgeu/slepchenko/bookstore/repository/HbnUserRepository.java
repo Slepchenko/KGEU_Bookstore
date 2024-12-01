@@ -15,12 +15,12 @@ public class HbnUserRepository implements UserRepository {
 
     @Override
     public Optional<User> save(User user) {
-        crudRepository.run(session -> session.persist(user));
+        crudRepository.run(session -> session.merge(user));
         return Optional.of(user);
     }
 
     public Optional<User> create(User user) {
-        crudRepository.run(session -> session.merge(user));
+        crudRepository.run(session -> session.persist(user));
         return Optional.of(user);
     }
 
@@ -37,8 +37,4 @@ public class HbnUserRepository implements UserRepository {
                .get()
                .getName();
     }
-
-//    public boolean updateCreateCart(int id) {
-//        return crudRepository.optional();
-//    }
 }
