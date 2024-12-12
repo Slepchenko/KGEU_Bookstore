@@ -1,14 +1,16 @@
 package kgeu.slepchenko.bookstore.controller;
 
+import kgeu.slepchenko.bookstore.model.Feedback;
 import kgeu.slepchenko.bookstore.service.BookService;
 import kgeu.slepchenko.bookstore.service.CategoryService;
+
+import kgeu.slepchenko.bookstore.service.FeedbackService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/books")
@@ -16,9 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BookController {
 
     private final BookService bookService;
-
     private final CategoryService categoryService;
-
+    private final FeedbackService feedbackService;
 
     @GetMapping("/allCategoryBook")
     public String getAllCategoryBook(Model model) {
@@ -63,4 +64,19 @@ public class BookController {
         return "book";
     }
 
+    @PostMapping("/sendFeedback")
+    public String sendFeedback(@ModelAttribute Feedback feedBack, Model model) {
+        int size = 6;
+        long totalBooks = bookService.getAllBooksSize();
+        int totalPages = (int) Math.ceil((double) totalBooks / size);
+        model.addAttribute("totalPages", totalPages);
+
+//        System.err.println("tuuuuuuuuuuuuuuuuut");
+//        if (feedBack == null) {
+//
+//            System.err.println("nulllllllllllllllllllllllllllllll");
+//        }
+//        feedbackService.save(feedBack);
+        return "/test";
+    }
 }

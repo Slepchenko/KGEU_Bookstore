@@ -127,7 +127,6 @@
                 </span>
             </div>
         </div>
-
     </main>
 </div>
 
@@ -147,8 +146,8 @@
         <div class="item-menu"><a th:href="@{/index}">Преимущества</a></div>
         <div class="item-menu"><a th:href="@{/index}">Каталог</a></div>
         <div class="item-menu"><a th:href="@{/index}">О нас</a></div>
-        <div class="item-menu"><a th:href="@{/index}">Контакты</a></div>
-        <div class="item-menu"><a th:href="@{/index}">Обратная связь</a></div>
+        <div class="item-menu"><a href="#modal-contacts">Контакты</a></div>
+        <div class="item-menu"><a href="#modal-feedback">Обратная связь</a></div>
     </div>
     <div class="contacts">
         <div class="item-menu">КГЭУ</div>
@@ -183,10 +182,28 @@
 </div>
 
 <div id="modal-feedback" class="modal">
-    <div class="modal-content">
+    <div class="modal-fb-content">
         <a href="#" class="close">&times;</a>
-        <h2>обратная связь</h2>
-        <p></p>
+        <h2>Обратная связь</h2>
+        <form th:action="@{/books/sendFeedback}" method="post" enctype="multipart/form-data">
+            <div class="fb-in">
+                <label for="name" class="form-label">Ваше имя</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Введите ваше имя" required>
+            </div>
+            <div class="fb-in">
+                <label for="email" class="form-label">Ваш email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Введите ваш email" required>
+            </div>
+            <div class="fb-in">
+                <label for="phone" class="form-label">Ваш номер телефона</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Введите ваш номер телефона" required>
+            </div>
+            <div class="fb-in">
+                <label for="note" class="form-label">Сообщение</label>
+                <textarea class="form-control" id="note" name="note" placeholder="Введите ваше сообщение" required></textarea>
+            </div>
+            <button type="submit" class="btn send-form">Отправить</button>
+        </form>
     </div>
 </div>
 
