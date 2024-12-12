@@ -4,7 +4,7 @@
 }
 
 .search-btn {
-    background: grey;
+    background: #ffc;
     width: 40px;
     height: 38px;
 }
@@ -25,10 +25,10 @@
 
 .login1 a {
         text-decoration: none;
-        color: white;
+        color: black;
 }
 
 .login2 a {
         text-decoration: none;
-        color: white;
+        color: black;
 }

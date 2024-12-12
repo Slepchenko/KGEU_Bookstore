@@ -1,5 +1,5 @@
 .content {
-    background: gray;
+    background: #f1f1d6;
 }
 .main {
     display: flex;
@@ -9,7 +9,7 @@
     margin-top: 5px;
     margin-left: 10px;
     margin: 25px;
-    background: gray;
+    background: #f1f1d6;
 }
 
 
@@ -42,7 +42,7 @@
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background: white
+    background: #b1b9a7
 }
 
 .book-img {
@@ -115,6 +115,6 @@
 
 .pagination a {
      text-decoration: none;
-     color: yellow;
+     color: green;
 }
 

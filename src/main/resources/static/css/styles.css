@@ -3,7 +3,7 @@ body {
     margin: 0 auto;
     width: 100vw;
     height: 100vh;
-    background-color: #777;
+    background-color: #ffc;
 }
 
 .header {
@@ -12,7 +12,7 @@ body {
     justify-content: space-between;
     width: 100%;
     height: 12%;
-    background: #555;
+    background: #a0b38f;
 }
 
 .logo {
@@ -25,8 +25,8 @@ body {
     align-items: center;
     justify-content: space-between;
     height: 3%;
-    background: #222;
-    color: green;
+    background: #3b332e;
+    color: #cbd853;
     text-decoration: none;
 }
 
@@ -45,12 +45,12 @@ body {
 }
 
 .aside {
-    background: #999;
+    background: #7c995f;
     width: 20%;
 }
 
 .main {
-    background: #888;
+    background: #ffc;
     width: 80%;
 }
 
@@ -59,7 +59,7 @@ body {
     justify-content: space-between;
     width: 100%;
     height: 15%;
-    background: #444;
+    background: #3b332e;
     font-size: 10 px;
     color: white;
 }
