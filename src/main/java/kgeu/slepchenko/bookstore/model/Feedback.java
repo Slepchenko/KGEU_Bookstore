@@ -20,9 +20,11 @@ public class Feedback {
 
     private String name;
 
-    private int phone;
+    private String phone;
 
     private String email;
+
+    private String feedback;
 
     private String note;
 

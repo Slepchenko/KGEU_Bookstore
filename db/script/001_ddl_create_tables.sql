@@ -20,11 +20,12 @@ CREATE TABLE book_purchase (
 	book_id int not null references book(id)
 );
 
-CREATE TABLE feedback (
+create table feedback (
     id SERIAL PRIMARY KEY,
     name varchar(128) not null,
- 	phone int not null,
- 	email varchar(128) not null,
+ 	phone varchar(60),
+ 	email varchar(128),
+	feedback varchar(60) not null,
  	note text
 );
 

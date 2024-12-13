@@ -1,6 +1,8 @@
 package kgeu.slepchenko.bookstore.controller;
 
+import kgeu.slepchenko.bookstore.filter.AddUserModel;
 import kgeu.slepchenko.bookstore.model.Feedback;
+import kgeu.slepchenko.bookstore.model.User;
 import kgeu.slepchenko.bookstore.service.BookService;
 import kgeu.slepchenko.bookstore.service.CategoryService;
 
@@ -65,18 +67,31 @@ public class BookController {
     }
 
     @PostMapping("/sendFeedback")
-    public String sendFeedback(@ModelAttribute Feedback feedBack, Model model) {
+    public String sendFeedback(HttpSession session,
+                               @ModelAttribute Feedback feedBack,
+                               @RequestParam("contactMethod") String contactMethod,
+                               Model model) {
+        Model modelUpdated = AddUserModel.checkInMenu(model, session);
+        User currentUser = (User) modelUpdated.getAttribute("user");
         int size = 6;
         long totalBooks = bookService.getAllBooksSize();
         int totalPages = (int) Math.ceil((double) totalBooks / size);
+        model.addAttribute("books", bookService.findByPagination(1, size));
+        model.addAttribute("currentPage", 1);
         model.addAttribute("totalPages", totalPages);
-
-//        System.err.println("tuuuuuuuuuuuuuuuuut");
-//        if (feedBack == null) {
-//
-//            System.err.println("nulllllllllllllllllllllllllllllll");
-//        }
-//        feedbackService.save(feedBack);
-        return "/test";
+        model.addAttribute("categories", categoryService.findAll());
+        feedBack.setFeedback("phone");
+        feedBack.setName(currentUser.getName());
+        if (contactMethod.equals("email")) {
+            feedBack.setFeedback("email");
+        }
+        feedbackService.save(feedBack);
+        return "/index";
     }
+
+    @GetMapping("/getTest")
+    public String test() {
+        return "test";
+    }
+
 }
