@@ -121,23 +121,38 @@
     <div class="modal-fb-content">
         <a href="#" class="close">&times;</a>
         <h2>Обратная связь</h2>
-        <form th:action="@{/books/sendFeedback}" method="post" >
+        <form th:action="@{/books/sendFeedback}" method="post">
             <div class="fb-in">
-                <label for="name" class="form-label">Пользователь</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Введите ваше имя" required>
+                <label class="form-label">Пользователь</label>
+                <div class="authorized-user-name" th:text="${user.name}">Авторизованный пользователь</div>
             </div>
+
             <div class="fb-in">
                 <label for="email" class="form-label">Ваш email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Введите ваш email" required>
             </div>
+
             <div class="fb-in">
                 <label for="phone" class="form-label">Ваш номер телефона</label>
                 <input type="tel" class="form-control" id="phone" name="phone" placeholder="Введите ваш номер телефона" required>
             </div>
             <div class="fb-in">
+                <span class="form-label" style="display:block; margin-bottom:5px;">Как с вами связаться?</span>
+                <div>
+                    <input type="radio" id="contactPhone" name="contactMethod" value="phone" checked>
+                    <label for="contactPhone">По телефону</label>
+                </div>
+                <div>
+                    <input type="radio" id="contactEmail" name="contactMethod" value="email">
+                    <label for="contactEmail">По электронной почте</label>
+                </div>
+            </div>
+
+            <div class="fb-in">
                 <label for="note" class="form-label">Сообщение</label>
                 <textarea class="form-control" id="note" name="note" placeholder="Введите ваше сообщение" required></textarea>
             </div>
+
             <button type="submit" class="btn send-form">Отправить</button>
         </form>
     </div>
