@@ -93,5 +93,4 @@ public class BookController {
     public String test() {
         return "test";
     }
-
 }
