@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="/css/modal.css"/>
     <script th:src="@{/js/code.jquery.com_jquery-3.7.0.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
+
     <title>Книжный магазин</title>
 </head>
 <body>
@@ -39,12 +40,11 @@
         </div>
         <div class="login2" th:if="${user.name != 'Гость'}">
             <a class="user_name" th:text="${user.name}"
-               th:href="@{/index}"></a>
+               href="#" th:onclick="window.open('@{/users/info}', 'user', 'width=600,height=400'); return false;"></a>
             <a class="out" th:href="@{/users/logout}">Выйти</a>
         </div>
         <div class="cart_bar" th:if="${user.name != 'Гость'}">
-            <a class="cart_ref" th:href="@{/shoppingCart/{id}(123456789)}">Cart
-            </a>
+            <a class="cart_ref" th:href="@{/shoppingCart/{id}(123456789)}">Cart</a>
         </div>
     </div>
 </header>
@@ -143,7 +143,7 @@
         <div class="item-menu"><a href="#modal-book">Главная</a></div>
         <div class="item-menu"><a th:href="@{/books/getTest}">Бестселлер</a></div>
         <div class="item-menu"><a th:href="@{/index}">Предзаказ</a></div>
-        <div class="item-menu"><a th:href="@{/index}">Преимущества</a></div>
+        <div class="item-menu"><a th:href="@{/books/getTest}">Преимущества</a></div>
         <div class="item-menu"><a th:href="@{/index}">Каталог</a></div>
         <div class="item-menu"><a th:href="@{/index}">О нас</a></div>
         <div class="item-menu"><a href="#modal-contacts">Контакты</a></div>

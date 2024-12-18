@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-public class HbnShoppingCartRepository implements ShoppingCartRepository{
+public class HbnShoppingCartRepository implements ShoppingCartRepository {
 
     CrudRepository crudRepository;
 

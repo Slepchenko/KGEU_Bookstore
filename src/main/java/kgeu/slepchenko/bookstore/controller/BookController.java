@@ -91,6 +91,7 @@ public class BookController {
 
     @GetMapping("/getTest")
     public String test() {
-        return "test";
+
+        return "redirect:/index";
     }
 }

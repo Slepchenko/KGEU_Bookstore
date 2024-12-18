@@ -19,8 +19,7 @@ public class ShoppingCartController {
 
     @PostMapping("/create")
     public String createCart() {
-
-        return "redirect:/shoppingCart/" ;
+        return "redirect:/shoppingCart/";
     }
 
     @GetMapping("/{id}")

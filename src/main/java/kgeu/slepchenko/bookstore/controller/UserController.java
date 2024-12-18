@@ -76,4 +76,18 @@ public class UserController {
         return "redirect:/users/login";
     }
 
+    @GetMapping("/info")
+    public String userInfo(Model model, HttpSession session) {
+        // Предположим, что в сессии лежит объект user
+//        User user = (User) session.getAttribute("user");
+        System.err.println("suda?");
+        User user = (User) AddUserModel.checkInMenu(model, session).getAttribute("user");
+        if (user == null) {
+            return "redirect:/users/login";
+        }
+        model.addAttribute("user", user);
+        System.err.println("vse tut");
+        return "users/userInfo";
+    }
+
 }
