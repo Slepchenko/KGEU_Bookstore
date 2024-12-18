@@ -36,12 +36,22 @@ create table shopping_cart (
 
 create table users (
 	id serial primary key,
-	name varchar(50) not null,
+	name varchar(120) not null,
+	second_name varchar (120),
+	surname varchar(120) not null,
 	email varchar(120) unique not null,
 	password varchar(120) not null,
 	shopping_cart_id int unique,
 	FOREIGN KEY (shopping_cart_id) REFERENCES shopping_cart (id) ON DELETE SET NULL
 );
+--create table users (
+--	id serial primary key,
+--	name varchar(50) not null,
+--	email varchar(120) unique not null,
+--	password varchar(120) not null,
+--	shopping_cart_id int unique,
+--	FOREIGN KEY (shopping_cart_id) REFERENCES shopping_cart (id) ON DELETE SET NULL
+--);
 
 create table cart_item (
 	id SERIAL PRIMARY KEY,
