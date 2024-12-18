@@ -1,5 +1,6 @@
 package kgeu.slepchenko.bookstore.controller;
 
+import kgeu.slepchenko.bookstore.exception.InvalidPasswordException;
 import kgeu.slepchenko.bookstore.filter.AddUserModel;
 import kgeu.slepchenko.bookstore.model.User;
 import kgeu.slepchenko.bookstore.service.UserService;
@@ -30,12 +31,26 @@ public class UserController {
     @PostMapping("/register")
     public String register(Model model, HttpSession session, @ModelAttribute User user) {
         AddUserModel.checkInMenu(model, session);
-        Optional<User> optionalUser = userService.create(user);
-        if (optionalUser.isEmpty()) {
-            model.addAttribute("message", "Пользователь с таким логином уже существует");
-            return "errors/404";
+
+        System.err.println("в метод регистер зашли");
+        try {
+            Optional<User> optionalUser = userService.create(user);
+            System.err.println("в трай кетч зашли");
+//            if (optionalUser.isEmpty()) {
+//                System.err.println("а сюда?");
+//                model.addAttribute("message", "Пользователь с таким логином уже существует");
+//                return "errors/404";
+//            }
+
+            return "/users/login";
+        } catch (InvalidPasswordException e) {
+
+            System.err.println("в кэеч штоле??");
+            model.addAttribute("user", user);
+            model.addAttribute("error", e.getMessage());
+            System.err.println(e.getMessage());
+            return "/users/register";
         }
-        return "/users/login";
     }
 
     @GetMapping("/login")

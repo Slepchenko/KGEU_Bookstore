@@ -1,5 +1,6 @@
 package kgeu.slepchenko.bookstore.service;
 
+import kgeu.slepchenko.bookstore.exception.InvalidPasswordException;
 import kgeu.slepchenko.bookstore.model.ShoppingCart;
 import kgeu.slepchenko.bookstore.model.User;
 import kgeu.slepchenko.bookstore.repository.UserRepository;
@@ -31,6 +32,12 @@ public class SimpleUserService implements UserService {
 
     @Override
     public Optional<User> create(User user) {
+        if (!validatePassword(user)) {
+            throw new InvalidPasswordException(
+                    "Пароль должен содержать прописные буквы, специальный символ, цифру и т.д. ну вы сами знаете"
+            );
+        }
+        System.err.println("Прошли???");
         User savedUser = userRepository.create(user).get();
         ShoppingCart cart = new ShoppingCart();
         cart.setTotalPrice(0);

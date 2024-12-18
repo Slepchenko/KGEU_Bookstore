@@ -39,6 +39,7 @@ create table users (
 	name varchar(120) not null,
 	second_name varchar (120),
 	surname varchar(120) not null,
+	sex boolean,
 	email varchar(120) unique not null,
 	password varchar(120) not null,
 	shopping_cart_id int unique,
