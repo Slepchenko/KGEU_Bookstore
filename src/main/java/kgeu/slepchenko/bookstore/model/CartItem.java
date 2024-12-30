@@ -2,6 +2,7 @@ package kgeu.slepchenko.bookstore.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -24,8 +25,10 @@ public class CartItem {
 
     private int price;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
-    private ShoppingCart cart;
+    private ShoppingCart shoppingCart;
 
 }

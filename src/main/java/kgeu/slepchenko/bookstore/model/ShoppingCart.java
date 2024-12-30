@@ -2,6 +2,7 @@ package kgeu.slepchenko.bookstore.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,12 +19,16 @@ public class ShoppingCart {
     @EqualsAndHashCode.Include
     private int id;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<CartItem> items = new ArrayList<>();
 
     @Column(name = "total_price")
     private int totalPrice;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToOne(mappedBy = "shoppingCart", fetch = FetchType.LAZY)
     private User user;
 

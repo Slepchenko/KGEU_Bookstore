@@ -53,8 +53,8 @@ public class SimpleUserService implements UserService {
     }
 
     @Override
-    public String findUserNameById(int id) {
-        return userRepository.findUserNameById(id);
+    public Optional<User> findUserById(int id) {
+        return userRepository.findUserById(id);
     }
 
     private boolean validatePassword(User user) {

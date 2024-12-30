@@ -26,15 +26,15 @@ public class HbnUserRepository implements UserRepository {
 
     @Override
     public Optional<User> findByLoginAndPassword(String login, String password) {
-        return crudRepository.optional("from User where email = :fEmail and password = :fPassword", User.class,
+//        return crudRepository.optional("from User where email = :fEmail and password = :fPassword", User.class,
+//                Map.of("fEmail", login, "fPassword", password));
+        return crudRepository.optional("select distinct u from User u left join fetch u.shoppingCart sc left join fetch sc.items where u.email = :fEmail and u.password = :fPassword", User.class,
                 Map.of("fEmail", login, "fPassword", password));
     }
 
    @Override
-    public String findUserNameById(int id) {
+    public Optional<User> findUserById(int id) {
        return crudRepository
-               .optional("from User where id = :fId", User.class, Map.of("fId", id))
-               .get()
-               .getName();
+               .optional("from User where id = :fId", User.class, Map.of("fId", id));
     }
 }

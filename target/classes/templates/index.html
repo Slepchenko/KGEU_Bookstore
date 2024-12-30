@@ -39,16 +39,18 @@
             <a class="in" th:href="@{/users/login}">Войти</a>
         </div>
         <div class="login2" th:if="${user.name != 'Гость'}">
-            <a class="user_name" th:text="${user.name}"
-               href="#" th:onclick="window.open('[[@{/users/info}]]', 'user', 'width=600,height=400'); return false;"></a>
+            <a class="user_name"
+               th:text="${user.name}"
+               th:href="@{/users/info}"
+               onclick="window.open(this.href, 'user', 'width=600,height=400'); return false;">
+            </a>
             <a class="out" th:href="@{/users/logout}">Выйти</a>
         </div>
         <div class="cart_bar" th:if="${user.name != 'Гость'}">
-            <a class="cart_ref" th:href="@{/shoppingCart/{id}(123456789)}">Cart</a>
+            <a class="cart_ref" th:href="@{/shoppingCart/{id}(id=${user.shoppingCart.id})}">&#128722</a>
         </div>
     </div>
 </header>
-
 
 <!--Панель навигации Меню-->
 <nav class="nav">

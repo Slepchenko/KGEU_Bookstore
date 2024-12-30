@@ -1,11 +1,12 @@
 package kgeu.slepchenko.bookstore.service;
 
 import kgeu.slepchenko.bookstore.model.CartItem;
+import kgeu.slepchenko.bookstore.model.User;
 
 public interface CartItemService {
 
-    void addItemToCart(int cartId, CartItem item);
+    void addItemToCart(int bookId, User user);
 
-    void removeItemFromCart(int cartId, int itemId);
+    void removeItemFromCart(int itemId);
 
 }

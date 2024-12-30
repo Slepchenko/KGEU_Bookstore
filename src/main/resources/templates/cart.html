@@ -8,14 +8,14 @@
 <body>
 <h1>Корзина</h1>
 <ul>
-  <li th:each="item : ${cart.items}">
-    <p th:text="'Книга: ' + ${item.book.name}"></p>
-    <p>Количество: <span th:text="${item.quantity}"></span></p>
-    <p>Цена: <span th:text="${item.price}"></span> руб.</p>
-    <form th:action="@{/cart/item/remove/{cartId}/{itemId}(cartId=${cart.id}, itemId=${item.id})}" method="post">
-      <button type="submit">Удалить</button>
-    </form>
-  </li>
+<!--  <li th:each="item : ${cart.items}">-->
+<!--    <p th:text="'Книга: ' + ${item.book.name}"></p>-->
+<!--    <p>Количество: <span th:text="${item.quantity}"></span></p>-->
+<!--    <p>Цена: <span th:text="${item.price}"></span> руб.</p>-->
+<!--    <form th:action="@{/cart/item/remove/{cartId}/{itemId}(cartId=${cart.id}, itemId=${item.id})}" method="post">-->
+<!--      <button type="submit">Удалить</button>-->
+<!--    </form>-->
+<!--  </li>-->
 </ul>
 <p>Итоговая стоимость: <span th:text="${cart.totalPrice}"></span> руб.</p>
 </body>

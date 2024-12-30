@@ -4,6 +4,7 @@ import kgeu.slepchenko.bookstore.model.ShoppingCart;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -20,7 +21,11 @@ public class HbnShoppingCartRepository implements ShoppingCartRepository {
 
     @Override
     public Optional<ShoppingCart> findCartById(int cartId) {
-        return Optional.empty();
+        return crudRepository.optional(
+                "from ShoppingCart sc join fetch sc.user where sc.id = :fId ",
+                ShoppingCart.class,
+                Map.of("fId", cartId)
+        );
     }
 
     @Override

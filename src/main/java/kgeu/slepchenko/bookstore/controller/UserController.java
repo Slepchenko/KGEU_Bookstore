@@ -36,16 +36,9 @@ public class UserController {
         try {
             Optional<User> optionalUser = userService.create(user);
             System.err.println("в трай кетч зашли");
-//            if (optionalUser.isEmpty()) {
-//                System.err.println("а сюда?");
-//                model.addAttribute("message", "Пользователь с таким логином уже существует");
-//                return "errors/404";
-//            }
-
             return "/users/login";
         } catch (InvalidPasswordException e) {
 
-            System.err.println("в кэеч штоле??");
             model.addAttribute("user", user);
             model.addAttribute("error", e.getMessage());
             System.err.println(e.getMessage());
@@ -78,8 +71,6 @@ public class UserController {
 
     @GetMapping("/info")
     public String userInfo(Model model, HttpSession session) {
-        // Предположим, что в сессии лежит объект user
-//        User user = (User) session.getAttribute("user");
         System.err.println("suda?");
         User user = (User) AddUserModel.checkInMenu(model, session).getAttribute("user");
         if (user == null) {

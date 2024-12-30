@@ -10,7 +10,7 @@ public interface UserService {
 
     Optional<User> findByLoginAndPassword(String login, String password);
 
-    String findUserNameById(int id);
+    Optional<User> findUserById(int id);
 
     Optional<User> create(User user);
 
