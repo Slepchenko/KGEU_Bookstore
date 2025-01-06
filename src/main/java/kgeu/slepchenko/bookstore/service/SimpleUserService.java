@@ -6,13 +6,9 @@ import kgeu.slepchenko.bookstore.model.User;
 import kgeu.slepchenko.bookstore.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import org.passay.*;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import javax.transaction.Transactional;
 import java.util.Optional;
 
@@ -37,7 +33,6 @@ public class SimpleUserService implements UserService {
                     "Пароль должен содержать прописные буквы, специальный символ, цифру и т.д. ну вы сами знаете"
             );
         }
-        System.err.println("Прошли???");
         User savedUser = userRepository.create(user).get();
         ShoppingCart cart = new ShoppingCart();
         cart.setTotalPrice(0);
@@ -66,8 +61,8 @@ public class SimpleUserService implements UserService {
         rules.add(new CharacterRule(EnglishCharacterData.Digit, 1));
         rules.add(new CharacterRule(EnglishCharacterData.Special, 1));
         PasswordValidator validator = new PasswordValidator(rules);
-        PasswordData passwordData = new PasswordData(user.getPassword());
-        RuleResult result = validator.validate(passwordData);
+        PasswordData password = new PasswordData(user.getPassword());
+        RuleResult result = validator.validate(password);
         return result.isValid();
     }
 }

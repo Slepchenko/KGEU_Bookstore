@@ -31,14 +31,10 @@ public class UserController {
     @PostMapping("/register")
     public String register(Model model, HttpSession session, @ModelAttribute User user) {
         AddUserModel.checkInMenu(model, session);
-
-        System.err.println("в метод регистер зашли");
         try {
-            Optional<User> optionalUser = userService.create(user);
-            System.err.println("в трай кетч зашли");
+            userService.create(user);
             return "/users/login";
         } catch (InvalidPasswordException e) {
-
             model.addAttribute("user", user);
             model.addAttribute("error", e.getMessage());
             System.err.println(e.getMessage());
@@ -71,13 +67,11 @@ public class UserController {
 
     @GetMapping("/info")
     public String userInfo(Model model, HttpSession session) {
-        System.err.println("suda?");
         User user = (User) AddUserModel.checkInMenu(model, session).getAttribute("user");
         if (user == null) {
             return "redirect:/users/login";
         }
         model.addAttribute("user", user);
-        System.err.println("vse tut");
         return "users/userInfo";
     }
 

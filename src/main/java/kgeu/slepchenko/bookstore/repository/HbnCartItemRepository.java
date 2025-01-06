@@ -4,8 +4,6 @@ import kgeu.slepchenko.bookstore.model.CartItem;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 @AllArgsConstructor
 public class HbnCartItemRepository implements CartItemRepository {
@@ -15,7 +13,6 @@ public class HbnCartItemRepository implements CartItemRepository {
     @Override
     public void addItemToCart(CartItem item) {
         crudRepository.run(session -> session.merge(item));
-
     }
 
     @Override

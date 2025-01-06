@@ -23,11 +23,6 @@ public class SimpleCartItemService implements CartItemService {
         cartItem.setQuantity(1);
         cartItem.setPrice(book.getPrice());
         cartItem.setShoppingCart(user.getShoppingCart());
-        System.err.println("000000000000000");
-        System.err.println(cartItem.getShoppingCart().getId());
-        System.err.println(cartItem.getId());
-        System.err.println(cartItem.getBook().getId());
-        System.err.println(cartItem.getShoppingCart().getUser().getShoppingCart().getId());
         cartItemRepository.addItemToCart(cartItem);
     }
 

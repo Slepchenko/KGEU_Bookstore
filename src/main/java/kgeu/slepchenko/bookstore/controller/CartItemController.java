@@ -32,9 +32,7 @@ public class CartItemController {
         return "redirect:/books/"+ bookId;
     }
 
-//    @PostMapping("/remove/{cartId}/{itemId}")
     public String removeItemFromCart() {
-//        cartItemService.removeItemFromCart(cartId, itemId);
         return "redirect:/books/";
     }
 
