@@ -3,6 +3,7 @@ package kgeu.slepchenko.bookstore.repository;
 import kgeu.slepchenko.bookstore.model.Book;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 public interface BookRepository {
@@ -20,5 +21,9 @@ public interface BookRepository {
     Collection<Book> findByCategoryPagination(String categoryName, int page, int size);
 
     long getAllBooksSizeByCategory(String category);
+
+    List<Book> searchBook(String search, int page, int size);
+
+    long getSizeSearchedBook(String search);
 
 }

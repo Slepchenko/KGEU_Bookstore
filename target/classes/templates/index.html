@@ -30,10 +30,12 @@
 <header class="header">
     <img class="logo" src="/images/log.png"/>
     <div class="search-grp">
-        <input class="search" id="search" name="search" placeholder="поиск..." required>
-        <button class="search-btn"><a>&#128269;</a></button>
+        <form th:action="@{/books/search}" method="get" class="search-block">
+            <input class="search" id="search" name="q" placeholder="Поиск..." th:value="${search}">
+            <button class="search-btn" type="submit">&#128269;</button>
+        </form>
     </div>
-    <div class="login_bar " >
+    <div class="login_bar ">
         <div class="login1" th:if="${user.name == 'Гость'}">
             <a class="register" th:href="@{/users/register}">Регистрация</a>
             <a class="in" th:href="@{/users/login}">Войти</a>
@@ -102,31 +104,43 @@
             </div>
         </div>
 
-<!--        Номера страниц-->
+<!--       Номера страниц-->
         <div class="pages">
+<!--            <div th:if="${mode = 'cat'}" th:text="category"></div>-->
             <div class="pagination">
                 <span th:if="${currentPage > 1}">
-            <a th:if="${category != null}"
-               th:href="@{/books/getCategoryPagination(page=${currentPage - 1}, cat=${category})}">Предыдущая</a>
-            <a th:unless="${category != null}"
-               th:href="@{/books/bookByPagination(page=${currentPage - 1})}">Предыдущая</a>
+                    <a th:if="${mode == 'cat'}"
+                       th:href="@{/books/getCategoryPagination(page=${currentPage - 1}, cat=${category})}">/Предыдущая1/</a>
+                    <a th:if="${mode == 'search'}"
+                       th:href="@{/books/search(page=${currentPage - 1}, q=${searchedText})}">/Предыдущая2/</a>
+                    <a th:if="${mode == 'all'}"
+                       th:href="@{/books/bookByPagination(page=${currentPage - 1})}">/Предыдущая3/</a>
                 </span>
+
                 <span th:each="i : ${#numbers.sequence(1, totalPages)}">
-            <a th:if="${category != null}"
-               th:href="@{/books/getCategoryPagination(page=${i}, cat=${category})}"
-               th:text="${i}"
-               th:classappend="${i == currentPage} ? 'active' : ''"></a>
-            <a th:unless="${category != null}"
-               th:href="@{/books/bookByPagination(page=${i})}"
-               th:text="${i}"
-               th:classappend="${i == currentPage} ? 'active' : ''"></a>
+                    <a th:if="${mode == 'cat'}"
+                       th:href="@{/books/getCategoryPagination(page=${i}, cat=${category})}"
+                       th:text="${i}"
+                       th:classappend="${i == currentPage} ? 'active' : ''"></a>
+                    <a th:if="${mode == 'search'}"
+                       th:href="@{/books/search(page=${i}, q=${searchedText})}"
+                       th:text="${i}"
+                       th:classappend="${i == currentPage} ? 'active' : ''"></a>
+                    <a th:if="${mode == 'all'}"
+                       th:href="@{/books/bookByPagination(page=${i})}"
+                       th:text="${i}"
+                       th:classappend="${i == currentPage} ? 'active' : ''"></a>
                 </span>
                 <span th:if="${currentPage < totalPages}">
-            <a th:if="${category != null}"
-               th:href="@{/books/getCategoryPagination(page=${currentPage + 1}, cat=${category})}">Следующая</a>
-            <a th:unless="${category != null}"
-               th:href="@{/books/bookByPagination(page=${currentPage + 1})}">Следующая</a>
+                    <a th:if="${mode == 'cat'}"
+                       th:href="@{/books/getCategoryPagination(page=${currentPage + 1}, cat=${category})}">/Следующая1/</a>
+                    <a th:if="${mode == 'search'}"
+                       th:href="@{/books/search(page=${currentPage + 1}, q=${searchedText})}">/Следующая2/</a>
+                    <a th:if="${mode == 'all'}"
+                       th:href="@{/books/bookByPagination(page=${currentPage + 1})}">/Следующая3/</a>
                 </span>
+
+
             </div>
         </div>
     </main>
@@ -194,12 +208,14 @@
 
             <div class="fb-in">
                 <label for="email" class="form-label">Ваш email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Введите ваш email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Введите ваш email"
+                       required>
             </div>
 
             <div class="fb-in">
                 <label for="phone" class="form-label">Ваш номер телефона</label>
-                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Введите ваш номер телефона" required>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Введите ваш номер телефона"
+                       required>
             </div>
             <div class="fb-in">
                 <span class="form-label" style="display:block; margin-bottom:5px;">Как с вами связаться?</span>
@@ -215,7 +231,8 @@
 
             <div class="fb-in">
                 <label for="note" class="form-label">Сообщение</label>
-                <textarea class="form-control" id="note" name="note" placeholder="Введите ваше сообщение" required></textarea>
+                <textarea class="form-control" id="note" name="note" placeholder="Введите ваше сообщение"
+                          required></textarea>
             </div>
 
             <button type="submit" class="btn send-form">Отправить</button>

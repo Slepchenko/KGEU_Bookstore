@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -58,4 +59,23 @@ public class HbnBookRepository implements BookRepository {
     public long getAllBooksSizeByCategory(String category) {
         return crudRepository.optional("select count(b) from Book b where b.category.name like :fCategory", Long.class, Map.of("fCategory", category)).get();
      }
+
+     public long getSizeSearchedBook(String search) {
+        long books = crudRepository.optional("select count(b) from Book b where lower(b.name) like lower(concat('%', :fSearch, '%')) "
+                        + "or lower(b.author) like lower(concat('%', :fSearch, '%'))",
+                Long.class,
+                Map.of("fSearch", search)
+        ).get();
+        return books;
+     }
+
+     @Override
+    public List<Book> searchBook(String search, int page, int size) {
+       return crudRepository.query(
+               "from Book b join fetch b.category a where lower(b.name) like lower(concat('%', :fSearch, '%')) "
+                       + "or lower(b.author) like lower(concat('%', :fSearch, '%'))",
+               Book.class,
+               Map.of("fSearch", search)
+       );
+    }
 }

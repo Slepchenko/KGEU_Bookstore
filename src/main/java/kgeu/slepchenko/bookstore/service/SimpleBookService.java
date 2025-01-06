@@ -51,4 +51,17 @@ public class SimpleBookService implements BookService {
     public long getAllBooksSizeByCategory(String category) {
         return bookRepository.getAllBooksSizeByCategory(category);
     }
+
+    @Override
+    public List<Book> searchBook(String search, int page, int size) {
+        if (search == null || search.isBlank()) {
+            return bookRepository.findAll().stream().toList();
+        }
+        return bookRepository.searchBook(search, page, size);
+    }
+
+    @Override
+    public long getSizeSearchedBook(String search) {
+        return bookRepository.getSizeSearchedBook(search);
+    }
 }

@@ -17,18 +17,9 @@ public class IndexController {
 
     @GetMapping({"/", "/index"})
     public String getIndex(Model model) {
-        int page = 1;
-        int size = 6;
-        model.addAttribute("books", bookService.findByPagination(page, size));
-        long totalBooks = bookService.getAllBooksSize();
-        int totalPages = (int) Math.ceil((double) totalBooks / size);
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPages", totalPages);
-//        model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("books", bookService.findByPagination(1, 6));
         model.addAttribute("category", null);
-        return "/index";
+        return "redirect:/books/bookByPagination";
     }
 
 }

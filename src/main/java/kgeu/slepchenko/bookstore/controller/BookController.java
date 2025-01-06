@@ -1,6 +1,7 @@
 package kgeu.slepchenko.bookstore.controller;
 
 import kgeu.slepchenko.bookstore.filter.AddUserModel;
+import kgeu.slepchenko.bookstore.model.Book;
 import kgeu.slepchenko.bookstore.model.Feedback;
 import kgeu.slepchenko.bookstore.model.User;
 import kgeu.slepchenko.bookstore.service.BookService;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/books")
@@ -40,6 +42,8 @@ public class BookController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("categories", categoryService.findAll());
+        System.err.println("ALL");
+        model.addAttribute("mode", "all");
         return "index";
     }
 
@@ -59,7 +63,9 @@ public class BookController {
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("category", category);
-        return "/index";
+        System.err.println("CATEGORY");
+        model.addAttribute("mode", "cat");
+        return "index";
     }
 
     @GetMapping("/{id}")
@@ -89,6 +95,24 @@ public class BookController {
         }
         feedbackService.save(feedBack);
         return "/index";
+    }
+
+    @GetMapping("/search")
+    public String searchBook(Model model, @RequestParam(name = "q", required = false) String search, @RequestParam(defaultValue = "1") int page, HttpSession session) {
+        AddUserModel.checkInMenu(model, session);
+        int size = 6;
+        long totalBooks = bookService.getSizeSearchedBook(search);
+        int totalPages = (int) Math.ceil((double) totalBooks / size);
+
+        model.addAttribute("books", bookService.searchBook(search, page, size));
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("categories", categoryService.findAll());
+
+        model.addAttribute("searchedText", search);
+        System.err.println("SEARCH");
+        model.addAttribute("mode", "search");
+        return "index";
     }
 
 }
