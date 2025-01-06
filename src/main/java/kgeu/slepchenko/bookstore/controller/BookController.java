@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @RequestMapping("/books")
@@ -25,7 +24,7 @@ public class BookController {
     private final BookService bookService;
     private final CategoryService categoryService;
     private final FeedbackService feedbackService;
-    private final CartItemService cartItemService;
+    private final static int QUANTITY_BOOKS_ON_PAGE = 6;
 
     @GetMapping("/allCategoryBook")
     public String getAllCategoryBook(Model model) {
@@ -35,14 +34,12 @@ public class BookController {
 
     @GetMapping("/bookByPagination")
     public String getBookByPagination(@RequestParam(defaultValue = "1") int page, Model model) {
-        int size = 6;
         long totalBooks = bookService.getAllBooksSize();
-        int totalPages = (int) Math.ceil((double) totalBooks / size);
-        model.addAttribute("books", bookService.findByPagination(page, size));
+        int totalPages = (int) Math.ceil((double) totalBooks / QUANTITY_BOOKS_ON_PAGE);
+        model.addAttribute("books", bookService.findByPagination(page, QUANTITY_BOOKS_ON_PAGE));
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("categories", categoryService.findAll());
-        System.err.println("ALL");
         model.addAttribute("mode", "all");
         return "index";
     }
@@ -54,17 +51,34 @@ public class BookController {
     }
 
     @GetMapping("/getCategoryPagination")
-    public String getCategoryPagination(Model model, @RequestParam(name = "cat", required = false) String category, @RequestParam(defaultValue = "1") int page) {
-        int size = 6;
+    public String getCategoryPagination(Model model,
+                                        @RequestParam(name = "cat", required = false) String category,
+                                        @RequestParam(defaultValue = "1") int page) {
         long totalBooks = bookService.getAllBooksSizeByCategory(category);
-        int totalPages = (int) Math.ceil((double) totalBooks / size);
-        model.addAttribute("books", bookService.findByCategoryPagination(category, page, size));
+        int totalPages = (int) Math.ceil((double) totalBooks / QUANTITY_BOOKS_ON_PAGE);
+        model.addAttribute("books", bookService.findByCategoryPagination(category, page, QUANTITY_BOOKS_ON_PAGE));
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("category", category);
-        System.err.println("CATEGORY");
         model.addAttribute("mode", "cat");
+        return "index";
+    }
+
+    @GetMapping("/search")
+    public String searchBook(Model model,
+                             @RequestParam(name = "q", required = false) String search,
+                             @RequestParam(defaultValue = "1") int page, HttpSession session) {
+        AddUserModel.checkInMenu(model, session);
+        long totalBooks = bookService.getSizeSearchedBook(search);
+        int totalPages = (int) Math.ceil((double) totalBooks / QUANTITY_BOOKS_ON_PAGE);
+        model.addAttribute("books", bookService.searchBook(search, page, QUANTITY_BOOKS_ON_PAGE));
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("categories", categoryService.findAll());
+
+        model.addAttribute("searchedText", search);
+        model.addAttribute("mode", "search");
         return "index";
     }
 
@@ -81,10 +95,9 @@ public class BookController {
                                Model model) {
         Model modelUpdated = AddUserModel.checkInMenu(model, session);
         User currentUser = (User) modelUpdated.getAttribute("user");
-        int size = 6;
         long totalBooks = bookService.getAllBooksSize();
-        int totalPages = (int) Math.ceil((double) totalBooks / size);
-        model.addAttribute("books", bookService.findByPagination(1, size));
+        int totalPages = (int) Math.ceil((double) totalBooks / QUANTITY_BOOKS_ON_PAGE);
+        model.addAttribute("books", bookService.findByPagination(1, QUANTITY_BOOKS_ON_PAGE));
         model.addAttribute("currentPage", 1);
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("categories", categoryService.findAll());
@@ -95,24 +108,6 @@ public class BookController {
         }
         feedbackService.save(feedBack);
         return "/index";
-    }
-
-    @GetMapping("/search")
-    public String searchBook(Model model, @RequestParam(name = "q", required = false) String search, @RequestParam(defaultValue = "1") int page, HttpSession session) {
-        AddUserModel.checkInMenu(model, session);
-        int size = 6;
-        long totalBooks = bookService.getSizeSearchedBook(search);
-        int totalPages = (int) Math.ceil((double) totalBooks / size);
-
-        model.addAttribute("books", bookService.searchBook(search, page, size));
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPages", totalPages);
-        model.addAttribute("categories", categoryService.findAll());
-
-        model.addAttribute("searchedText", search);
-        System.err.println("SEARCH");
-        model.addAttribute("mode", "search");
-        return "index";
     }
 
 }

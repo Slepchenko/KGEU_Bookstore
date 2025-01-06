@@ -22,7 +22,7 @@ public interface BookService {
 
     long getAllBooksSizeByCategory(String category);
 
-    List<Book> searchBook(String search, int page, int size);
+    Collection<Book> searchBook(String search, int page, int size);
 
     long getSizeSearchedBook(String search);
 

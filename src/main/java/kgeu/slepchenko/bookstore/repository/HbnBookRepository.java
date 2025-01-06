@@ -70,12 +70,14 @@ public class HbnBookRepository implements BookRepository {
      }
 
      @Override
-    public List<Book> searchBook(String search, int page, int size) {
+    public Collection<Book> searchBook(String search, int page, int size) {
        return crudRepository.query(
                "from Book b join fetch b.category a where lower(b.name) like lower(concat('%', :fSearch, '%')) "
                        + "or lower(b.author) like lower(concat('%', :fSearch, '%'))",
                Book.class,
-               Map.of("fSearch", search)
+               Map.of("fSearch", search),
+               page,
+               size
        );
     }
 }

@@ -53,7 +53,7 @@ public class SimpleBookService implements BookService {
     }
 
     @Override
-    public List<Book> searchBook(String search, int page, int size) {
+    public Collection<Book> searchBook(String search, int page, int size) {
         if (search == null || search.isBlank()) {
             return bookRepository.findAll().stream().toList();
         }

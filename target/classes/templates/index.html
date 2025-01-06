@@ -110,11 +110,11 @@
             <div class="pagination">
                 <span th:if="${currentPage > 1}">
                     <a th:if="${mode == 'cat'}"
-                       th:href="@{/books/getCategoryPagination(page=${currentPage - 1}, cat=${category})}">/Предыдущая1/</a>
+                       th:href="@{/books/getCategoryPagination(page=${currentPage - 1}, cat=${category})}">/Предыдущая/</a>
                     <a th:if="${mode == 'search'}"
-                       th:href="@{/books/search(page=${currentPage - 1}, q=${searchedText})}">/Предыдущая2/</a>
+                       th:href="@{/books/search(page=${currentPage - 1}, q=${searchedText})}">/Предыдущая/</a>
                     <a th:if="${mode == 'all'}"
-                       th:href="@{/books/bookByPagination(page=${currentPage - 1})}">/Предыдущая3/</a>
+                       th:href="@{/books/bookByPagination(page=${currentPage - 1})}">/Предыдущая/</a>
                 </span>
 
                 <span th:each="i : ${#numbers.sequence(1, totalPages)}">
@@ -133,11 +133,11 @@
                 </span>
                 <span th:if="${currentPage < totalPages}">
                     <a th:if="${mode == 'cat'}"
-                       th:href="@{/books/getCategoryPagination(page=${currentPage + 1}, cat=${category})}">/Следующая1/</a>
+                       th:href="@{/books/getCategoryPagination(page=${currentPage + 1}, cat=${category})}">/Следующая/</a>
                     <a th:if="${mode == 'search'}"
-                       th:href="@{/books/search(page=${currentPage + 1}, q=${searchedText})}">/Следующая2/</a>
+                       th:href="@{/books/search(page=${currentPage + 1}, q=${searchedText})}">/Следующая/</a>
                     <a th:if="${mode == 'all'}"
-                       th:href="@{/books/bookByPagination(page=${currentPage + 1})}">/Следующая3/</a>
+                       th:href="@{/books/bookByPagination(page=${currentPage + 1})}">/Следующая/</a>
                 </span>
 
 
