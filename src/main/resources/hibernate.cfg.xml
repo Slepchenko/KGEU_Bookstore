@@ -20,6 +20,7 @@
         <mapping class="kgeu.slepchenko.bookstore.model.User"/>
         <mapping class="kgeu.slepchenko.bookstore.model.CartItem"/>
         <mapping class="kgeu.slepchenko.bookstore.model.ShoppingCart"/>
+        <mapping class="kgeu.slepchenko.bookstore.model.BookPurchase"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -24,6 +24,7 @@ public class Book {
     private String imageUrl;
 
     private int price;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;

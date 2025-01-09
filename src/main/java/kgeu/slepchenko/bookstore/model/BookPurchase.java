@@ -2,11 +2,10 @@ package kgeu.slepchenko.bookstore.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -19,14 +18,16 @@ public class BookPurchase {
     @EqualsAndHashCode.Include
     private int id;
 
-    private String name;
-
+    @Column(name = "creation_date")
     private LocalDateTime created = LocalDateTime.now();
 
-    private int quantity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
-    @OneToMany
-    @JoinColumn(name = "book_id")
-    private List<Book> books = new ArrayList<>();
+    private int paid;
+
+    @Column(name = "all_books_purchase")
+    private String allBookPurchase;
 
 }

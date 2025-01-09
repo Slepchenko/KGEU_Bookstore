@@ -1,5 +1,6 @@
 package kgeu.slepchenko.bookstore.service;
 
+import kgeu.slepchenko.bookstore.model.CartItem;
 import kgeu.slepchenko.bookstore.model.ShoppingCart;
 import kgeu.slepchenko.bookstore.repository.ShoppingCartRepository;
 import lombok.AllArgsConstructor;
@@ -19,8 +20,14 @@ public class SimpleShoppingCartService implements ShoppingCartService {
     }
 
     @Override
-    public Optional<ShoppingCart> findCartById(int cartId) {
-        return shoppingCartRepository.findCartById(cartId);
+    public Optional<ShoppingCart> findCartById(int id) {
+        Optional<ShoppingCart> optionalShoppingCart = shoppingCartRepository.findCartById(id);
+        if (optionalShoppingCart.isEmpty()) {
+            throw new RuntimeException("Корзина не найдена");
+        }
+        ShoppingCart shoppingCart = optionalShoppingCart.get();
+        shoppingCart.setTotalPrice(shoppingCart.getItems().stream().map(CartItem::getPrice).reduce(Integer::sum).get());
+        return Optional.of(shoppingCart);
     }
 
     @Override

@@ -13,8 +13,6 @@ public class IndexController {
 
     private final CategoryService categoryService;
 
-    private final BookService bookService;
-
     @GetMapping({"/", "/index"})
     public String getIndex(Model model) {
         model.addAttribute("categories", categoryService.findAll());

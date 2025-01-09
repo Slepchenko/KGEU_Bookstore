@@ -18,8 +18,6 @@ public class CartItemController {
 
     private final CartItemService cartItemService;
 
-    private final UserService userService;
-
     @GetMapping("/add/{bookId}")
     public String addItemToCart(@PathVariable int bookId, Model model, HttpSession session) {
         AddUserModel.checkInMenu(model, session);

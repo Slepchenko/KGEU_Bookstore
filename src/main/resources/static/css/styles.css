@@ -63,3 +63,76 @@ body {
     font-size: 10 px;
     color: white;
 }
+
+.user-info {
+    background: #ffc;
+}
+
+
+
+/* Контейнер для корзины */
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Расстояние между элементами корзины */
+  padding: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Расстояние между постером и информацией о книге */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.book-poster {
+  flex: 0 0 20%; /* Ограничиваем ширину постера до 20% от контейнера */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poster-img {
+  width: 100%; /* Уменьшаем размер изображения */
+  height: auto; /* Сохраняем пропорции */
+  max-width: 150px; /* Дополнительное ограничение ширины */
+  max-height: 200px; /* Ограничение высоты */
+  object-fit: contain; /* Сохраняем пропорции без обрезки */
+  border-radius: 8px;
+}
+
+.book-all-info {
+  flex: 1; /* Занимает оставшееся пространство */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-info h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.book-info p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.cart-details p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.total-price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: right;
+}
+
+
+

@@ -20,11 +20,15 @@ public class HbnShoppingCartRepository implements ShoppingCartRepository {
     }
 
     @Override
-    public Optional<ShoppingCart> findCartById(int cartId) {
+    public Optional<ShoppingCart> findCartById(int id) {
         return crudRepository.optional(
-                "from ShoppingCart sc join fetch sc.user where sc.id = :fId ",
+                "select sc from ShoppingCart sc " +
+                        "join fetch sc.items i " +
+                        "join fetch i.book b " +
+                        "join fetch b.category c " +
+                        "join fetch sc.user where sc.id = :scId ",
                 ShoppingCart.class,
-                Map.of("fId", cartId)
+                Map.of("scId", id)
         );
     }
 
