@@ -28,6 +28,7 @@ public class CartItemController {
     }
 
     public String removeItemFromCart() {
+
         return "redirect:/books/";
     }
 

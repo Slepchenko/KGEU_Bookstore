@@ -6,6 +6,6 @@ public interface CartItemRepository {
 
     void addItemToCart(CartItem item);
 
-    void removeItemFromCart(int itemId);
+    boolean removeAllItemsFromCart(int id);
 
 }

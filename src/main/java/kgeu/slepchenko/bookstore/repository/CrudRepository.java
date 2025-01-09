@@ -82,6 +82,15 @@ public class CrudRepository {
         return query(command);
     }
 
+    public boolean query(String query) {
+        Predicate<Session> command = session -> {
+            var sq = session
+                    .createQuery(query);
+            return sq.executeUpdate() > 0;
+        };
+        return query(command);
+    }
+
     public boolean query(Predicate<Session> command) {
         return tx(command::test);
     }

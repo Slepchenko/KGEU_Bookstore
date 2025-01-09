@@ -5,6 +5,7 @@ import kgeu.slepchenko.bookstore.model.BookPurchase;
 import kgeu.slepchenko.bookstore.model.CartItem;
 import kgeu.slepchenko.bookstore.model.ShoppingCart;
 import kgeu.slepchenko.bookstore.repository.BookPurchaseRepository;
+import kgeu.slepchenko.bookstore.repository.CartItemRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +21,17 @@ public class SimpleBookPurchaseService implements BookPurchaseService {
 
     private final ShoppingCartService shoppingCartService;
 
-    @Transactional
+    private final CartItemService cartItemService;
+
     @Override
     public Optional<BookPurchase> create(BookPurchase bookPurchase) {
         ShoppingCart shoppingCart = shoppingCartService.findCartById(bookPurchase.getUser().getShoppingCart().getId()).get();
         List<CartItem> cartItems = shoppingCart.getItems();
         bookPurchase.setPaid(shoppingCart.getTotalPrice());
         bookPurchase.setAllBookPurchase(ConvAllBookPurchase.convert(cartItems, shoppingCart.getTotalPrice()));
-        return bookPurchaseRepository.create(bookPurchase);
+        Optional<BookPurchase> savedPurchase = bookPurchaseRepository.create(bookPurchase);
+        cartItemService.removeAllItemsFromCart(shoppingCart.getId());
+        return savedPurchase;
     }
 
     @Override

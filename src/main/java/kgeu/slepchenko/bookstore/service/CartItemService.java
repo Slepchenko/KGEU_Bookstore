@@ -7,6 +7,6 @@ public interface CartItemService {
 
     void addItemToCart(int bookId, User user);
 
-    void removeItemFromCart(int itemId);
+    boolean removeAllItemsFromCart(int id);
 
 }

@@ -27,7 +27,8 @@ public class SimpleCartItemService implements CartItemService {
     }
 
     @Override
-    public void removeItemFromCart(int itemId) {
-        cartItemRepository.removeItemFromCart(itemId);
+    public boolean removeAllItemsFromCart(int id) {
+        cartItemRepository.removeAllItemsFromCart(id);
+        return true;
     }
 }
