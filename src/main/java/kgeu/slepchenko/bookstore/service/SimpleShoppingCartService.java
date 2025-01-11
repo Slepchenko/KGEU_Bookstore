@@ -23,7 +23,7 @@ public class SimpleShoppingCartService implements ShoppingCartService {
     public Optional<ShoppingCart> findCartById(int id) {
         Optional<ShoppingCart> optionalShoppingCart = shoppingCartRepository.findCartById(id);
         if (optionalShoppingCart.isEmpty()) {
-            throw new RuntimeException("Корзина не найдена");
+            return Optional.empty();
         }
         ShoppingCart shoppingCart = optionalShoppingCart.get();
         shoppingCart.setTotalPrice(shoppingCart.getItems().stream().map(CartItem::getPrice).reduce(Integer::sum).get());
@@ -31,8 +31,8 @@ public class SimpleShoppingCartService implements ShoppingCartService {
     }
 
     @Override
-    public void updateCart(ShoppingCart cart) {
-        shoppingCartRepository.updateCart(cart);
+    public Optional<ShoppingCart> updateCart(ShoppingCart cart) {
+        return shoppingCartRepository.updateCart(cart);
     }
 
     @Override

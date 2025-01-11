@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/shoppingCart")
@@ -28,7 +29,13 @@ public class ShoppingCartController {
 
     @GetMapping("/{id}")
     public String findShoppingCartById(@PathVariable int id, Model model) {
+        Optional<ShoppingCart> optionalShoppingCart = shoppingCartService.findCartById(id);
+        if (optionalShoppingCart.isEmpty()) {
+            model.addAttribute("shoppingCart", null);
+            return "cart";
+        }
         ShoppingCart shoppingCart = shoppingCartService.findCartById(id).get();
+
         List<CartItem> cartItems = shoppingCart.getItems();
         model.addAttribute("shoppingCart", shoppingCart);
         model.addAttribute("cartItems", shoppingCart.getItems());

@@ -33,8 +33,13 @@ public class HbnShoppingCartRepository implements ShoppingCartRepository {
     }
 
     @Override
-    public void updateCart(ShoppingCart cart) {
+    public Optional<ShoppingCart> updateCart(ShoppingCart cart) {
 
+        boolean updated = crudRepository.query(
+                "update ShoppingCart sc set sc.totalPrice = 0 where sc.id = :id",
+                Map.of("id", cart.getId())
+        );
+        return updated ? Optional.of(cart) : Optional.empty();
     }
 
     @Override

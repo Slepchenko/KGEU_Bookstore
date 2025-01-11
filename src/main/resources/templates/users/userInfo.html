@@ -28,5 +28,12 @@
 <p><b>Отчество:</b> <span th:text="${user.secondName}"></span></p>
 <p><b>Фамилия:</b> <span th:text="${user.surname}"></span></p>
 <p><b>Email:</b> <span th:text="${user.email}"></span></p>
+<table class="table-all-purchase">
+  <tr th:each="a: ${all}">
+    <div>
+      <p th:text="${a.allBookPurchase}"></p>
+    </div>
+  </tr>
+</table>
 </body>
 </html>

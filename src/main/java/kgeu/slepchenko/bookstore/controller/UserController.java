@@ -3,6 +3,7 @@ package kgeu.slepchenko.bookstore.controller;
 import kgeu.slepchenko.bookstore.exception.InvalidPasswordException;
 import kgeu.slepchenko.bookstore.filter.AddUserModel;
 import kgeu.slepchenko.bookstore.model.User;
+import kgeu.slepchenko.bookstore.service.BookPurchaseService;
 import kgeu.slepchenko.bookstore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+
+    private final BookPurchaseService bookPurchaseService;
 
     @GetMapping("/register")
     public String getRegistrationPage() {
@@ -72,6 +75,7 @@ public class UserController {
             return "redirect:/users/login";
         }
         model.addAttribute("user", user);
+        model.addAttribute("all", bookPurchaseService.findAllByUserId(user.getId()));
         return "users/userInfo";
     }
 

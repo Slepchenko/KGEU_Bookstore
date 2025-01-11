@@ -10,7 +10,7 @@ public interface ShoppingCartRepository {
 
     Optional<ShoppingCart> findCartById(int cartId);
 
-    void updateCart(ShoppingCart cart);
+    Optional<ShoppingCart> updateCart(ShoppingCart cart);
 
     void deleteCart(int cartId);
 

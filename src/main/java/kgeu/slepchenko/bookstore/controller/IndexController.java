@@ -1,6 +1,5 @@
 package kgeu.slepchenko.bookstore.controller;
 
-import kgeu.slepchenko.bookstore.service.BookService;
 import kgeu.slepchenko.bookstore.service.CategoryService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

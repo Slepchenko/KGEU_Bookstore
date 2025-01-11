@@ -71,7 +71,7 @@
     <body>
     <form class="buy-1" th:action="@{/bookPurchase/create}" method="post">
         <h1>Корзина</h1>
-        <div class="cart-container">
+        <div class="cart-container" th:if="${shoppingCart != null}">
             <div class="cart-item" th:each="item : ${cartItems}">
                 <div class="book-poster">
                     <img th:src="@{${item.book.imageUrl}}" alt="Постер книги" class="poster-img">
@@ -87,16 +87,28 @@
                     </div>
                 </div>
             </div>
+            <p class="total-price">Итоговая стоимость: <span th:text="${shoppingCart.totalPrice}"></span> руб.</p>
+            <div>
+                <button type="submit" class="btn-buy">Купить</button>
+            </div>
+            <div>
+                <button class="btn-cancel">
+                    <a th:href="@{/index}" style="text-decoration: none; color: inherit;">Отмена</a>
+                </button>
+            </div>
         </div>
-        <p class="total-price">Итоговая стоимость: <span th:text="${shoppingCart.totalPrice}"></span> руб.</p>
-        <div>
-            <button type="submit" class="btn-buy">Купить</button>
+        <div th:if="${shoppingCart == null}" class="empty-shopping-cart">
+            <p>Корзина пуста</p>
+            <div>
+                <button class="btn-cancel">
+                    <a th:href="@{/index}" style="text-decoration: none; color: inherit;">Отмена</a>
+                </button>
+            </div>
         </div>
     </form>
     </body>
 
 </main>
-</div>
 
 <!--footer-->
 <footer class="footer">

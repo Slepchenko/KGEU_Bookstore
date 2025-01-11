@@ -4,6 +4,7 @@ import kgeu.slepchenko.bookstore.model.BookPurchase;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -36,5 +37,14 @@ public class HbnBookPurchaseRepository implements BookPurchaseRepository {
     @Override
     public Optional<BookPurchase> deleteById(int id) {
         return Optional.empty();
+    }
+
+    @Override
+    public List<BookPurchase> findAllByUserId(int id) {
+        return crudRepository.query(
+                "from BookPurchase bp join fetch bp.user u where u.id = :fId",
+                BookPurchase.class,
+                Map.of("fId", id)
+        );
     }
 }

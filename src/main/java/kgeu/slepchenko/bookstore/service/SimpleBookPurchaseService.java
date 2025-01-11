@@ -31,6 +31,8 @@ public class SimpleBookPurchaseService implements BookPurchaseService {
         bookPurchase.setAllBookPurchase(ConvAllBookPurchase.convert(cartItems, shoppingCart.getTotalPrice()));
         Optional<BookPurchase> savedPurchase = bookPurchaseRepository.create(bookPurchase);
         cartItemService.removeAllItemsFromCart(shoppingCart.getId());
+        shoppingCart.setTotalPrice(0);
+        shoppingCartService.updateCart(shoppingCart);
         return savedPurchase;
     }
 
@@ -48,4 +50,12 @@ public class SimpleBookPurchaseService implements BookPurchaseService {
         return bookPurchaseRepository.deleteById(id);
     }
 
+    @Override
+    public List<BookPurchase> findAllByUserId(int id) {
+        List<BookPurchase> list = bookPurchaseRepository.findAllByUserId(id);
+        if (list == null) {
+            return List.of();
+        }
+        return list;
+    }
 }

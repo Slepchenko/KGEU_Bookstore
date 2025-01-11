@@ -77,8 +77,8 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <button class="btn-back">Назад</button>
-                    <a th:href="@{/cart/add/{bookId}(bookId=${book.id})}"><button class="btn-order">Заказать</button></a>
+                    <a th:href="@{/index}"><button class="btn-back">Отмена</button></a>
+                    <a th:href="@{/cart/add/{bookId}(bookId=${book.id})}"><button class="btn-order">В корзину</button></a>
                 </div>
             </div>
         </div>

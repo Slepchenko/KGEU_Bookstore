@@ -13,12 +13,12 @@ CREATE TABLE book (
    category_id int not null references category(id)
 );
 
-CREATE TABLE book_purchase (
-    id SERIAL PRIMARY KEY,
-    name varchar(256) not null,
- 	created timestamp,
-	book_id int not null references book(id)
-);
+--CREATE TABLE book_purchase (
+--    id SERIAL PRIMARY KEY,
+--    name varchar(256) not null,
+-- 	created timestamp,
+--	book_id int not null references book(id)
+--);
 
 create table feedback (
     id SERIAL PRIMARY KEY,
@@ -71,7 +71,7 @@ create table cart_item (
 create table book_purchase(
 	id serial primary key,
 	creation_date timestamp not null default current_timestamp,
-	user_id int unique,
+	user_id int,
 	paid int not null,
 	all_books_purchase text,
 	FOREIGN KEY (user_id) REFERENCES users(id)

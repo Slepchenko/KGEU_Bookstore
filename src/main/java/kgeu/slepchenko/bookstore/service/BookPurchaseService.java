@@ -2,6 +2,7 @@ package kgeu.slepchenko.bookstore.service;
 
 import kgeu.slepchenko.bookstore.model.BookPurchase;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface BookPurchaseService {
@@ -11,5 +12,7 @@ public interface BookPurchaseService {
     Optional<BookPurchase> findById(int id);
 
     Optional<BookPurchase> deleteById(int id);
+
+    List<BookPurchase> findAllByUserId(int id);
 
 }
