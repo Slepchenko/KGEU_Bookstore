@@ -35,12 +35,9 @@ public class ShoppingCartController {
             return "cart";
         }
         ShoppingCart shoppingCart = shoppingCartService.findCartById(id).get();
-
         List<CartItem> cartItems = shoppingCart.getItems();
         model.addAttribute("shoppingCart", shoppingCart);
         model.addAttribute("cartItems", shoppingCart.getItems());
-
-
         return "cart";
     }
 

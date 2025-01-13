@@ -24,15 +24,11 @@
 </head>
 <body class="user-info">
 <h1>Информация о пользователе</h1>
-<p><b>Имя:</b> <span th:text="${user.name}"></span></p>
-<p><b>Отчество:</b> <span th:text="${user.secondName}"></span></p>
-<p><b>Фамилия:</b> <span th:text="${user.surname}"></span></p>
+<p><b>Имя пользователя:</b> <span th:text="'Имя пользователя: ' + ${user.name} + ' ' + ${user.secondName} + ' ' + ${user.surname}"></span></p>
 <p><b>Email:</b> <span th:text="${user.email}"></span></p>
 <table class="table-all-purchase">
-  <tr th:each="a: ${all}">
-    <div>
-      <p th:text="${a.allBookPurchase}"></p>
-    </div>
+  <tr th:each="item : ${info}">
+    <td th:text="${item}"></td>
   </tr>
 </table>
 </body>

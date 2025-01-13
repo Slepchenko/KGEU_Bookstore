@@ -65,23 +65,21 @@ body {
 }
 
 .user-info {
-    background: #ffc;
+    background: #f1f1d6;
 }
-
-
 
 /* Контейнер для корзины */
 .cart-container {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Расстояние между элементами корзины */
+  gap: 20px;
   padding: 20px;
 }
 
 .cart-item {
   display: flex;
   align-items: center;
-  gap: 20px; /* Расстояние между постером и информацией о книге */
+  gap: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 15px;
@@ -90,23 +88,23 @@ body {
 }
 
 .book-poster {
-  flex: 0 0 20%; /* Ограничиваем ширину постера до 20% от контейнера */
+  flex: 0 0 20%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .poster-img {
-  width: 100%; /* Уменьшаем размер изображения */
-  height: auto; /* Сохраняем пропорции */
-  max-width: 150px; /* Дополнительное ограничение ширины */
-  max-height: 200px; /* Ограничение высоты */
-  object-fit: contain; /* Сохраняем пропорции без обрезки */
+  width: 100%;
+  height: auto;
+  max-width: 150px;
+  max-height: 200px;
+  object-fit: contain;
   border-radius: 8px;
 }
 
 .book-all-info {
-  flex: 1; /* Занимает оставшееся пространство */
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -134,5 +132,44 @@ body {
   text-align: right;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
 
+.btn-buy {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
+.btn-buy:hover {
+    background-color: darkgreen;
+}
+
+.btn-cancel {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background-color: darkred;
+}
+
+.btn-cancel a {
+    text-decoration: none;
+    color: white;
+}

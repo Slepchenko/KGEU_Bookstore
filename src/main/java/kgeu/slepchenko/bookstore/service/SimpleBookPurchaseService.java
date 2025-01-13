@@ -28,7 +28,7 @@ public class SimpleBookPurchaseService implements BookPurchaseService {
         ShoppingCart shoppingCart = shoppingCartService.findCartById(bookPurchase.getUser().getShoppingCart().getId()).get();
         List<CartItem> cartItems = shoppingCart.getItems();
         bookPurchase.setPaid(shoppingCart.getTotalPrice());
-        bookPurchase.setAllBookPurchase(ConvAllBookPurchase.convert(cartItems, shoppingCart.getTotalPrice()));
+        bookPurchase.setAllBookPurchase(ConvAllBookPurchase.convertForSave(cartItems, shoppingCart.getTotalPrice(), bookPurchase.getCreated()));
         Optional<BookPurchase> savedPurchase = bookPurchaseRepository.create(bookPurchase);
         cartItemService.removeAllItemsFromCart(shoppingCart.getId());
         shoppingCart.setTotalPrice(0);

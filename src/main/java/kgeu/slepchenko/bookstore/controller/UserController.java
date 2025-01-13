@@ -2,6 +2,7 @@ package kgeu.slepchenko.bookstore.controller;
 
 import kgeu.slepchenko.bookstore.exception.InvalidPasswordException;
 import kgeu.slepchenko.bookstore.filter.AddUserModel;
+import kgeu.slepchenko.bookstore.logic.ConvAllBookPurchase;
 import kgeu.slepchenko.bookstore.model.User;
 import kgeu.slepchenko.bookstore.service.BookPurchaseService;
 import kgeu.slepchenko.bookstore.service.UserService;
@@ -74,8 +75,11 @@ public class UserController {
         if (user == null) {
             return "redirect:/users/login";
         }
+
         model.addAttribute("user", user);
         model.addAttribute("all", bookPurchaseService.findAllByUserId(user.getId()));
+//        model.addAttribute("info", ConvAllBookPurchase.convertForSave(bookPurchaseService.findAllByUserId(user.getId())))
+        model.addAttribute("info", ConvAllBookPurchase.getListInfo(bookPurchaseService.findAllByUserId(user.getId())));
         return "users/userInfo";
     }
 
