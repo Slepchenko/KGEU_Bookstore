@@ -3,11 +3,9 @@ package kgeu.slepchenko.bookstore.logic;
 import kgeu.slepchenko.bookstore.model.Book;
 import kgeu.slepchenko.bookstore.model.BookPurchase;
 import kgeu.slepchenko.bookstore.model.CartItem;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,7 +39,7 @@ public class ConvAllBookPurchase {
                 .map(BookPurchase::getAllBookPurchase)
                 .flatMap(s -> Stream.concat(
                         Arrays.stream(s.split("\n")),
-                        Stream.of("")
+                        Stream.of("\n")
                 )).collect(Collectors.toList());
     }
 
