@@ -5,11 +5,9 @@ import kgeu.slepchenko.bookstore.model.BookPurchase;
 import kgeu.slepchenko.bookstore.model.CartItem;
 import kgeu.slepchenko.bookstore.model.ShoppingCart;
 import kgeu.slepchenko.bookstore.repository.BookPurchaseRepository;
-import kgeu.slepchenko.bookstore.repository.CartItemRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 

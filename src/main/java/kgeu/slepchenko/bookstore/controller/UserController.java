@@ -78,7 +78,6 @@ public class UserController {
 
         model.addAttribute("user", user);
         model.addAttribute("all", bookPurchaseService.findAllByUserId(user.getId()));
-//        model.addAttribute("info", ConvAllBookPurchase.convertForSave(bookPurchaseService.findAllByUserId(user.getId())))
         model.addAttribute("info", ConvAllBookPurchase.getListInfo(bookPurchaseService.findAllByUserId(user.getId())));
         return "users/userInfo";
     }

@@ -25,7 +25,6 @@
 </head>
 <body>
 
-
 <!--header-->
 <header class="header">
     <img class="logo" src="/images/log.png"/>
@@ -66,7 +65,6 @@
     <div><a href="#modal-feedback">Обратная связь</a></div>
 </nav>
 
-
 <!--Content -->
 <div class="content">
     <!--    Жанры-->
@@ -82,7 +80,6 @@
             </tr>
         </table>
     </aside>
-
 
     <!--   контент -->
     <main class="main">
@@ -106,7 +103,6 @@
 
 <!--       Номера страниц-->
         <div class="pages">
-<!--            <div th:if="${mode = 'cat'}" th:text="category"></div>-->
             <div class="pagination">
                 <span th:if="${currentPage > 1}">
                     <a th:if="${mode == 'cat'}"
@@ -150,11 +146,10 @@
     <div class="company-inf">
         <div class="div-footer">Книжный магазин "Апысь"</div>
         <div>"Апысь" - крупнейшая сеть книжных магазинов, успешно работающих от Кильдебяк до пос. Лесхоз</div>
-        <div>А ещё это - крупный интернет-магазин книг. В нем вы можете заказывать книги в любое время года</div>
+        <div>А ещё это - крупный интернет-магазин книг. В нем Вы можете заказывать книги в любое время года.</div>
         <div>Купив книгу в магазине "Апысь", вы становитесь её обладателем!</div>
     </div>
     <div class="menu">
-
         <div class="item-menu"><a href="#modal-book">Главная</a></div>
         <div class="item-menu"><a th:href="@{/books/getTest}">Бестселлер</a></div>
         <div class="item-menu"><a th:href="@{/index}">Предзаказ</a></div>
@@ -175,7 +170,6 @@
             <a><img class="github" src="/images/github.svg"/></a>
         </div>
     </div>
-
 </footer>
 
 <div id="modal-about-us" class="modal">

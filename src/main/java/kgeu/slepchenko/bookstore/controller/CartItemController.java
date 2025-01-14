@@ -3,7 +3,6 @@ package kgeu.slepchenko.bookstore.controller;
 import kgeu.slepchenko.bookstore.filter.AddUserModel;
 import kgeu.slepchenko.bookstore.model.User;
 import kgeu.slepchenko.bookstore.service.CartItemService;
-import kgeu.slepchenko.bookstore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +30,5 @@ public class CartItemController {
 
         return "redirect:/books/";
     }
-
 
 }
